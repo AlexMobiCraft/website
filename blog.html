@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог - Алекс - Разработчик ПО</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Подключаем те же стили -->
+</head>
+<body>
+    <header class="header">
+       <!-- Скопируйте сюда <nav> из index.html -->
+        <nav class="nav container">
+            <a href="index.html#home" class="nav-logo">Алекс</a> <!-- Ссылка на главную -->
+            <ul class="nav-menu">
+                 <li class="nav-item"><a href="index.html#home" class="nav-link">Главная</a></li>
+                 <li class="nav-item"><a href="index.html#services" class="nav-link">Услуги</a></li>
+                 <li class="nav-item"><a href="index.html#projects" class="nav-link">Проекты</a></li>
+                 <li class="nav-item"><a href="blog.html" class="nav-link active-link">Блог</a></li> {/* Активная ссылка */}
+                 <li class="nav-item"><a href="index.html#contact" class="nav-link">Контакты</a></li>
+             </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                 <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-page section">
+            <h2 class="section-title">Блог</h2>
+            <span class="section-subtitle">Статьи, советы и разборы кейсов</span>
+
+            <div class="blog-container container">
+                <p style="text-align: center; margin-bottom: 2rem;">Скоро здесь появятся интересные публикации!</p>
+
+                <!-- Пример структуры для будущих постов -->
+                <!--
+                <article class="blog-post">
+                    <h3 class="blog-post-title"><a href="#">Заголовок статьи 1</a></h3>
+                    <div class="blog-post-meta">
+                        <span class="blog-post-date">Дата публикации</span> |
+                        <span class="blog-post-tags">Теги: <a href="#">Python</a>, <a href="#">Telegram</a></span>
+                    </div>
+                    <p class="blog-post-excerpt">Краткое описание статьи...</p>
+                    <a href="#" class="button button--small button--link">Читать далее &rarr;</a>
+                </article>
+
+                 <article class="blog-post">
+                    <h3 class="blog-post-title"><a href="#">Заголовок статьи 2</a></h3>
+                     <div class="blog-post-meta">
+                        <span class="blog-post-date">Дата публикации</span> |
+                        <span class="blog-post-tags">Теги: <a href="#">AI</a>, <a href="#">Web</a></span>
+                    </div>
+                    <p class="blog-post-excerpt">Краткое описание статьи...</p>
+                    <a href="#" class="button button--small button--link">Читать далее &rarr;</a>
+                </article>
+                 -->
+
+                 <!-- Добавьте стили для .blog-page, .blog-container, .blog-post и т.д. в style.css -->
+
+            </div>
+        </section>
+    </main>
+
+     <footer class="footer">
+        <!-- Скопируйте сюда <footer> из index.html -->
+         <div class="footer-container container">
+             <p class="footer-copy">&copy; <span id="current-year">2024</span> Алекс. Все права защищены.</p>
+         </div>
+    </footer>
+
+    <script src="js/script.js"></script> <!-- Подключаем тот же JS -->
+</body>
+</html>
