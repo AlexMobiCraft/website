@@ -603,53 +603,106 @@ textarea.contact-input {
   .nav {
     height: calc(3rem + 1.5rem); /* Увеличить высоту хедера */
     column-gap: 1rem;
+    align-items: center; /* Выравниваем лого и меню по центру по вертикали */
   }
   .nav-icon, .nav-close, .nav-toggle {
     display: none; /* Скрыть мобильные элементы */
   }
-  .nav-menu { /* Стили для десктопного меню */
-    position: static;
-    width: auto;
-    background: none;
-    box-shadow: none;
+
+  /* ===== ИСПРАВЛЕННЫЙ БЛОК ДЛЯ .nav-menu ===== */
+  .nav-menu {
+    position: static;   /* Убираем fixed позиционирование */
+    width: auto;        /* Ширина по содержимому */
+    background: none;   /* Убираем фон оверлея */
+    box-shadow: none;   /* Убираем тень оверлея */
     border-radius: 0;
-    padding: 0;
-    margin-left: auto; /* Прижать меню вправо */
+    padding: 0;         /* Убираем внутренние отступы оверлея */
+    margin-left: auto;  /* Прижимаем меню вправо (если лого слева) */
+
+    /* КЛЮЧЕВЫЕ СВОЙСТВА ДЛЯ ГОРИЗОНТАЛЬНОСТИ */
+    display: flex;         /* Делаем пункты li горизонтальными */
+    align-items: center;   /* Выравниваем их по центру вертикально */
+    column-gap: 2rem;    /* Расстояние между пунктами li */
   }
+  /* ========================================== */
+
+  /* Блок .nav-list больше не нужен, так как стили применены к .nav-menu */
+  /*
   .nav-list {
-    display: flex;
-    column-gap: 2rem;
+     display: flex;
+     column-gap: 2rem;
   }
+  */
+
   .nav-link {
-    flex-direction: row;
+    /* flex-direction: row; -- это правило здесь не нужно */
     font-size: var(--normal-font-size);
+    /* Уточненные стили для ссылок на десктопе */
+    color: var(--text-color); /* Обычный цвет */
+    font-weight: var(--font-medium);
+    padding: 0.5rem 0; /* Добавим немного паддинга для удобства клика */
+    transition: color .3s;
   }
+   .nav-link:hover {
+       color: var(--first-color); /* Цвет при наведении */
+   }
+   /* Стиль активной ссылки */
+   .nav-link.active-link {
+       color: var(--first-color);
+       position: relative; /* Для возможного подчеркивания */
+   }
+    /* Опциональное подчеркивание активной ссылки */
+   .nav-link.active-link::before{
+        content: '';
+        position: absolute;
+        bottom: -4px; /* Настройте положение */
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--first-color);
+        border-radius: 1px; /* Слегка скруглим */
+   }
+
+
   .nav-link i { /* Скрыть иконки в десктопном меню, если не нужны */
       display: none;
   }
 
+  /* --- Остальные стили для десктопа --- */
   .home-container {
-      /* Можно увеличить gap */
        gap: 3rem;
+       align-items: center; /* Выровнять текст и возможную картинку */
   }
   .home-content {
-      padding-top: 1.5rem; /* Небольшой отступ сверху для текста */
+      padding-top: 1.5rem;
   }
-  .home-description { max-width: 450px;} /* Ограничить ширину описания */
+  .home-description { max-width: 450px;}
 
   .services-container {
-        grid-template-columns: repeat(3, 1fr); /* Три колонки услуг */
+        grid-template-columns: repeat(3, 250px); /* Можно фиксированную ширину */
+        justify-content: center; /* Центрировать карточки, если их меньше 3 */
+        gap: 2rem; /* Проверить значение gap */
   }
   .service-item { padding: 2.5rem 1.5rem; }
 
    .projects-container {
-        grid-template-columns: repeat(3, 1fr); /* Три колонки проектов */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Сделать адаптивнее */
+        gap: 2rem; /* Проверить значение gap */
+  }
+
+  .contact-container {
+      grid-template-columns: 1fr 1fr; /* Убедимся, что 2 колонки */
+      align-items: start; /* Выровнять начало форм и инфо */
+      gap: 4rem; /* Проверить значение gap */
   }
 
   .footer-container {
-      padding: 2rem 0; /* Уменьшить паддинг футера */
-      /* Можно расположить копирайт и соцсети в строку */
-      /* display: flex; justify-content: space-between; align-items: center; */
+      padding: 2rem 0;
+      display: flex; /* Горизонтально для копирайта и соцсетей (если будут) */
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Перенос на маленьких экранах */
+      gap: 1rem;
   }
    .scrollup{
         right: 2rem;
@@ -660,6 +713,15 @@ textarea.contact-input {
 
 }
 
+/* --- Остальные медиа-запросы ниже без изменений --- */
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1000px; /* Можно чуть увеличить контейнер */
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .home-container { gap: 5rem;}
+}
 @media screen and (min-width: 1024px) {
     .container {
         padding-left: 0; /* Убрать боковые паддинги у контейнера */
