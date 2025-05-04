@@ -75,7 +75,7 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
-  background-image: url("images/fon.jpg");
+  background-image: url("/images/fon.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
