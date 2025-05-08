@@ -227,6 +227,20 @@ img, svg {
     font-weight: var(--font-medium);
 }
 
+/* Стили для кнопки переключения темы */
+.theme-switch {
+    position: fixed; /* Или absolute, в зависимости от размещения */
+    top: 1.5rem; /* Настройте положение */
+    right: 1.5rem; /* Настройте положение */
+    z-index: var(--z-fixed);
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--title-color); /* Цвет иконки по умолчанию */
+    background: none;
+    border: none;
+    padding: 0;
+}
+
 /* Переключатель темы */
 .nav__theme-button {
   font-size: 1.5rem;

@@ -97,6 +97,41 @@ if (currentYearSpan) {
     currentYearSpan.textContent = new Date().getFullYear();
 }
 
+/*=============== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ (ТЕМНАЯ/СВЕТЛАЯ) ===============*/
+const themeButton = document.getElementById('theme-switch'); // ID кнопки переключения темы
+const darkTheme = 'dark-theme'; // Класс темной темы (определите в CSS)
+const iconTheme = 'uil-sun'; // Класс иконки для темной темы (солнце) - Unicons
+// const iconTheme = 'fas-sun'; // Класс иконки для темной темы (солнце) - Font Awesome
+
+// Предыдущая выбранная тема (из Local Storage)
+const selectedTheme = localStorage.getItem('selected-theme');
+const selectedIcon = localStorage.getItem('selected-icon');
+
+// Получаем текущую тему, проверяя класс dark-theme у body
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+// Получаем текущую иконку, проверяя класс iconTheme у кнопки
+const getCurrentIcon = () => themeButton.querySelector('i').classList.contains(iconTheme) ? 'uil-sun' : 'uil-moon';
+// const getCurrentIcon = () => themeButton.querySelector('i').classList.contains(iconTheme) ? 'fas-sun' : 'fas-moon';
+
+// Если пользователь ранее выбрал тему
+if (selectedTheme) {
+    // Если валидация выполнена, мы спрашиваем, какая была проблема, чтобы знать, активировали ли мы dark
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+    themeButton.querySelector('i').classList[selectedIcon === iconTheme ? 'add' : 'remove'](iconTheme);
+}
+
+// Активация / деактивация темы вручную с помощью кнопки
+if (themeButton) { // Проверяем, что кнопка существует на странице
+    themeButton.addEventListener('click', () => {
+        // Добавляем или удаляем класс dark-theme / iconTheme
+        document.body.classList.toggle(darkTheme);
+        themeButton.querySelector('i').classList.toggle(iconTheme);
+
+        // Сохраняем выбранную тему и иконку в Local Storage
+        localStorage.setItem('selected-theme', getCurrentTheme());
+        localStorage.setItem('selected-icon', getCurrentIcon());
+    });
+}
 /*=============== ДОПОЛНИТЕЛЬНО (если нужно) ===============*/
 // Например, анимации при прокрутке (ScrollReveal библиотека)
 // Валидация формы (хотя required атрибуты уже есть)
