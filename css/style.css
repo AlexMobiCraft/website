@@ -533,11 +533,14 @@ textarea.contact-input {
 /*=============== FOOTER ===============*/
 .footer { /* Обновлено: фон футера */
     padding-top: 2rem;
+    padding-bottom: 5rem; /* Увеличиваем нижний отступ здесь */
     background-color: var(--primary-color); /* Можно сделать отличным от фона */
     color: #fff;
+    position: relative; 
+    z-index: 1; 
 }
 .footer-container {
-    padding-bottom: 7rem; /* Увеличенный отступ снизу, учитывая фиксированное меню */
+    padding-bottom: var(--mb-2, 1.5rem); /* Используем переменную или значение по умолчанию */
     text-align: center;
 }
 .footer-copy {
