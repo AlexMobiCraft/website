@@ -242,20 +242,20 @@ img, svg {
 
 /* Стили для кнопки переключения темы */
 .theme-switch {
-    position: fixed; /* Или absolute, в зависимости от размещения */
-    top: 1.5rem; /* Настройте положение */
-    right: 1.5rem; /* Настройте положение */
+    position: fixed; /* Фиксируем по умолчанию (для мобильных) */
+    top: 1.5rem; 
+    right: 1.5rem; 
     z-index: var(--z-fixed);
     font-size: 1.25rem;
     cursor: pointer;
-    color: var(--text-color); /* Устанавливаем цвет как у основного текста */
+    color: var(--text-color); 
     background: none;
     border: none;
     padding: 0;
-    margin-left: 1.5rem; /* Добавляем отступ слева от меню */
-    display: inline-block; /* Добавлено для устранения возможного lint warning */
-    position: relative; /* Для тонкой настройки положения */
-    top: -2px; /* Сдвигаем немного вверх, подберите значение */
+    /* margin-left: 1.5rem; -- Убрано, не нужно для fixed */
+    display: inline-block; 
+    /* position: relative; -- Убрано, будет для десктопа */
+    /* top: -2px; -- Убрано, будет для десктопа */
 }
 
 .nav-toggle {
@@ -728,9 +728,10 @@ textarea.contact-input {
     gap: 1.5rem; /* Расстояние между пунктами меню */
   }
   .theme-switch {
-    /* margin-left: 1.5rem; -- УДАЛЕНО, управляется gap в nav-right-group */
-    /* КЛЮЧЕВЫЕ СВОЙСТВА ДЛЯ ГОРИЗОНТАЛЬНОСТИ */
-     /* column-gap: 2rem; -- Удалено, т.к. здесь не нужно */
+    position: relative; /* Возвращаем в поток для десктопа */
+    top: -2px; /* Сдвигаем немного вверх для выравнивания */
+    right: auto; /* Сбрасываем fixed позиционирование */
+    /* margin-left управляется gap родителя .nav-right-group */
   }
 
  
