@@ -490,6 +490,7 @@ img, svg {
 /* Форма */
 .contact-form {
     width: 100%;
+    margin-bottom: var(--mb-3); /* Добавляем отступ снизу */
 }
 .contact-inputs {
     grid-template-columns: 1fr; /* По одному полю в ряд на мобильных */
