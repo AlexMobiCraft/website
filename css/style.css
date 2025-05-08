@@ -99,7 +99,7 @@ html {
 }
 
 body {
-  margin: 0 0 3rem 0; /* Отступ для фиксированного меню */
+  margin: 0 0 6rem 0; /* Отступ для фиксированного меню и доп. пространства для футера */
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
