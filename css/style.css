@@ -263,6 +263,8 @@ img, svg {
   font-weight: var(--font-medium);
  font-size: 1.5rem;
  cursor: pointer;
+ display: block; /* Убедимся, что элемент блочный */
+ z-index: calc(var(--z-fixed) + 1); /* Чтобы был выше, чем nav-menu, если оно имеет --z-fixed */
 }
 
 .nav-menu {
