@@ -267,11 +267,12 @@ img, svg {
 }
 
 .nav-list {
- grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .nav-link {
   display: flex;
+ flex-direction: column;
   align-items: center;
   font-weight: var(--font-medium);
   transition: .3s;
