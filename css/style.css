@@ -99,7 +99,7 @@ html {
 }
 
 body {
-  margin: 0 0 6rem 0; /* Отступ для фиксированного меню и доп. пространства для футера */
+  margin: 0 0 3rem 0; /* Отступ для фиксированного меню */
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
@@ -537,7 +537,7 @@ textarea.contact-input {
     color: #fff;
 }
 .footer-container {
-    padding-bottom: 4rem; /* Отступ снизу, учитывая фиксированное меню */
+    padding-bottom: 7rem; /* Увеличенный отступ снизу, учитывая фиксированное меню */
     text-align: center;
 }
 .footer-copy {
