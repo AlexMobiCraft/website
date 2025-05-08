@@ -3,19 +3,20 @@
 
 :root {
   /* Цвета (пример) */
-  --hue-color: 250; /* Фиолетовый */
-  --first-color: hsl(var(--hue-color), 69%, 61%);
-  --first-color-second: hsl(var(--hue-color), 69%, 61%);
-  --first-color-alt: hsl(var(--hue-color), 57%, 53%);
-  --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
-  --title-color: hsl(var(--hue-color), 8%, 15%);
-  --text-color: hsl(var(--hue-color), 8%, 45%);
-  --text-color-light: hsl(var(--hue-color), 8%, 65%);
-  --input-color: hsl(var(--hue-color), 70%, 96%);
-  --body-color: hsl(var(--hue-color), 60%, 99%);
-  --container-color: #FFF;
-  --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
-  --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+  --hue: 250; /* Фиолетовый */
+  --primary-color: hsl(var(--hue), 80%, 65%);
+  --primary-color-alt: hsl(var(--hue), 80%, 55%);
+  --primary-color-light: hsl(var(--hue), 90%, 90%);
+
+  --title-color: hsl(var(--hue), 10%, 20%);
+  --text-color: hsl(var(--hue), 10%, 40%);
+  --text-color-light: hsl(var(--hue), 10%, 60%);
+  
+  --body-color: hsl(var(--hue), 20%, 95%);
+  --container-color: hsl(var(--hue), 0%, 100%);
+
+  --scroll-bar-color: hsl(var(--hue), 10%, 85%);
+  --scroll-thumb-color: hsl(var(--hue), 10%, 70%);
 
   /* Шрифты */
   --body-font: 'Poppins', sans-serif;
@@ -58,6 +59,23 @@
   }
 }
 
+/*=============== ТЕМНАЯ ТЕМА ===============*/
+body.dark-theme {
+  --title-color: hsl(var(--hue), 10%, 80%);
+  --text-color: hsl(var(--hue), 10%, 70%);
+  --text-color-light: hsl(var(--hue), 10%, 50%);
+
+  --body-color: hsl(var(--hue), 20%, 15%);
+  --container-color: hsl(var(--hue), 20%, 20%);
+  --input-color: hsl(var(--hue), 20%, 25%);
+
+  --scroll-bar-color: hsl(var(--hue), 10%, 30%);
+  --scroll-thumb-color: hsl(var(--hue), 10%, 40%);
+
+  background-image: url("/images/dark-fon.jpg"); /* Опционально, другое фон для темной темы */
+
+}
+
 /* Базовые настройки */
 * {
   box-sizing: border-box;
@@ -75,8 +93,8 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
-  background-image: url("/images/fon.jpg");
   background-size: cover;
+  background-attachment: fixed; /* Фон фиксирован при прокрутке */
   background-repeat: no-repeat;
 }
 
@@ -91,7 +109,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: var(--first-color); /* Цвет ссылок */
+  color: var(--primary-color); /* Цвет ссылок */
 }
 
 img, svg {
@@ -99,7 +117,15 @@ img, svg {
   height: auto;
 }
 
+/* Плавные переходы для всех элементов */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
 /*=============== ПЕРЕИСПОЛЬЗУЕМЫЕ CSS КЛАССЫ ===============*/
+
+
+
 .section {
   padding: 4rem 0 2rem; /* Увеличьте паддинги для больших экранов */
 }
@@ -134,7 +160,7 @@ img, svg {
 /* Кнопки */
 .button {
   display: inline-block;
-  background-color: var(--first-color);
+  background-color: var(--primary-color);
   color: #FFF;
   padding: 1rem;
   border-radius: .5rem;
@@ -145,7 +171,7 @@ img, svg {
 }
 
 .button:hover {
-  background-color: var(--first-color-alt);
+  background-color: var(--primary-color-alt);
 }
 
 .button-icon {
@@ -161,18 +187,18 @@ img, svg {
 
 .button--ghost {
     background-color: transparent;
-    border: 2px solid var(--first-color);
-    color: var(--first-color);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
 }
 .button--ghost:hover {
-    background-color: var(--first-color);
+    background-color: var(--primary-color);
     color: #fff;
 }
 
 .button--link{
     padding: 0;
     background-color: transparent;
-    color: var(--first-color);
+    color: var(--primary-color);
 }
 .button--link:hover{
     color: var(--first-color-alt);
@@ -199,6 +225,12 @@ img, svg {
 .nav-logo {
     color: var(--title-color);
     font-weight: var(--font-medium);
+}
+
+/* Переключатель темы */
+.nav__theme-button {
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .nav-menu {
@@ -234,7 +266,7 @@ img, svg {
   font-weight: var(--font-medium);
   transition: .3s;
 }
-.nav-link:hover {
+.nav-link:hover, .nav-link.active-link {
   color: var(--first-color);
 }
 
@@ -257,10 +289,11 @@ img, svg {
 
 /* Активная ссылка */
 .active-link {
-  color: var(--first-color);
+  color: var(--primary-color);
 }
 
 /* Стили для десктопного меню (появятся в @media) */
+
 
 /*=============== Стили для секций (Home, Services, Projects, Contact) ===============*/
 
@@ -289,7 +322,7 @@ img, svg {
     position: absolute;
     width: 70px;
     height: 1px;
-    background-color: var(--first-color);
+    background-color: var(--primary-color);
     left: 0;
     top: 1rem;
 }
@@ -324,7 +357,7 @@ img, svg {
 }
 .service-icon {
     font-size: 2rem;
-    color: var(--first-color);
+    color: var(--primary-color);
     margin-bottom: var(--mb-1);
     display: block;
 }
@@ -362,7 +395,7 @@ img, svg {
 .project-img {
     /* Стили для обертки изображения */
     height: 200px; /* Фиксированная высота для единообразия */
-    background-color: var(--first-color-lighter); /* Фон для заглушки */
+    background-color: var(--primary-color-light); /* Фон для заглушки */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -375,7 +408,7 @@ img, svg {
 }
 .project-placeholder-img {
     font-size: 1.5rem;
-    color: var(--first-color-alt);
+    color: var(--primary-color-alt);
     font-weight: var(--font-semi-bold);
 }
 .project-title,
@@ -410,7 +443,7 @@ img, svg {
 }
 .contact-icon {
     font-size: 2rem;
-    color: var(--first-color);
+    color: var(--primary-color);
     margin-right: var(--mb-0-75);
 }
 .contact-title {
@@ -425,7 +458,7 @@ img, svg {
     transition: color .3s;
 }
 .contact-subtitle a:hover {
-    color: var(--first-color);
+    color: var(--primary-color);
 }
 /* Форма */
 .contact-form {
@@ -443,7 +476,7 @@ img, svg {
     border: 1px solid transparent; /* Для focus */
 }
 .contact-content:focus-within { /* Стиль при фокусе на input внутри */
-    border-color: var(--first-color-alt);
+    border-color: var(--primary-color-alt);
 }
 .contact-label {
     font-size: var(--smaller-font-size);
@@ -468,7 +501,7 @@ textarea.contact-input {
 }
 
 /*=============== FOOTER ===============*/
-.footer {
+.footer { /* Обновлено: фон футера */
     padding-top: 2rem;
     background-color: var(--first-color-second); /* Можно сделать отличным от фона */
     color: #fff;
@@ -491,7 +524,7 @@ textarea.contact-input {
     transition: color .3s;
 }
 .footer-social-link:hover {
-    color: var(--first-color-lighter);
+    color: var(--primary-color-light);
 }
 
 
@@ -500,12 +533,12 @@ textarea.contact-input {
   position: fixed;
   right: 1rem;
   bottom: -20%; /* Скрыть по умолчанию */
-  background-color: var(--first-color);
+  background-color: var(--primary-color);
   opacity: .8;
   padding: .3rem .5rem;
   border-radius: .4rem;
   z-index: var(--z-tooltip);
-  transition: .4s;
+  transition: bottom .4s ease; /* Плавный переход для появления */
 }
 .scrollup:hover{
   background-color: var(--first-color-alt);
@@ -533,6 +566,35 @@ textarea.contact-input {
 }
 ::-webkit-scrollbar-thumb:hover{
   background-color: var(--text-color-light);
+}
+
+/*=============== СТИЛИ ДЛЯ БЛОГА ===============*/
+.blog-section {
+    padding: 4rem 0 2rem;
+}
+
+.blog-container {
+    max-width: 800px; /* Ширина контейнера блога */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+}
+
+.blog-post {
+    background-color: var(--container-color);
+    padding: 2rem;
+    border-radius: .75rem;
+    margin-bottom: 3rem; /* Отступ между постами */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h2 {
+    font-size: var(--h2-font-size);
+    margin-bottom: var(--mb-1);
+}
+
+.blog-post p {
+    margin-bottom: var(--mb-1-5);
 }
 
 /*=============== АДАПТИВНОСТЬ (Медиа-запросы) ===============*/
@@ -655,7 +717,7 @@ textarea.contact-input {
        position: relative; /* Для возможного подчеркивания */
    }
     /* Опциональное подчеркивание активной ссылки */
-   .nav-link.active-link::before{
+   .nav-link.active-link::after{ /* Изменено на ::after */
         content: '';
         position: absolute;
         bottom: -4px; /* Настройте положение */
@@ -713,6 +775,12 @@ textarea.contact-input {
    .show-scroll{ /* Показать кнопку Наверх */
        bottom: 3rem;
    }
+
+    /* Стили для блога на десктопе */
+    .blog-container {
+        max-width: 900px;
+        padding: 0;
+    }
 
 }
 
