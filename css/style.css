@@ -246,9 +246,9 @@ img, svg {
     top: 1.5rem; /* Настройте положение */
     right: 1.5rem; /* Настройте положение */
     z-index: var(--z-fixed);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     cursor: pointer;
-    color: var(--title-color); /* Цвет иконки по умолчанию */
+    color: var(--text-color); /* Устанавливаем цвет как у основного текста */
     background: none;
     border: none;
     padding: 0;
