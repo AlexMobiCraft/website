@@ -252,7 +252,6 @@ img, svg {
 .nav-menu {
  /* Стили для мобильного меню (скрыто по умолчанию) */
    position: fixed;
-   bottom: -100%; /* Скрываем под экраном */
    left: 0;
    width: 100%;
    background-color: var(--body-color);
@@ -268,8 +267,6 @@ img, svg {
 }
 
 .nav-list {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
   text-align: center;
 }
 
@@ -278,7 +275,6 @@ img, svg {
   flex-direction: column;
   align-items: center;
   font-size: var(--small-font-size);
-  color: var(--title-color);
   font-weight: var(--font-medium);
   transition: .3s;
 }
@@ -681,14 +677,11 @@ textarea.contact-input {
   .nav-icon, .nav-close {
     display: none; /* Скрыть мобильные элементы */
   }
-
-  /* ===== ИСПРАВЛЕННЫЙ БЛОК ДЛЯ .nav-menu ===== */
+ 
   .nav-menu {
     position: static;   /* Убираем fixed позиционирование */
     width: auto;        /* Ширина по содержимому */
     background: none;   /* Убираем фон оверлея */
-    box-shadow: none;   /* Убираем тень оверлея */
-    border-radius: 0;
     padding: 0;         /* Убираем внутренние отступы оверлея */
     margin-left: auto;  /* Прижимаем меню вправо (если лого слева) */
 
