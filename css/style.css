@@ -323,19 +323,19 @@ img, svg {
     padding-top: 4rem; /* Дополнительный отступ сверху для первой секции */
 }
 
-.home-content {
-    display: grid;
-    row-gap: 2rem; /* Отступ между текстом и визуалом на мобильных, если они друг под другом */
+.home-content { /* Блок с текстом */
+    display: grid; /* ВНИМАНИЕ: Если .home-container является grid-контейнером, то .home-content (текстовый блок) не должен быть display:grid. Это может быть ошибка. */
+    row-gap: 2rem; 
     gap: 1.5rem;
+    order: 2; /* Текст вторым на мобильных */
 }
-.home-visual {
+.home-visual { /* Блок с картинкой */
     display: flex;
     align-items: center;
     justify-content: center;
-    order: 2; /* Визуальный блок второй на мобильных */
-    /* Для примера можно добавить мин. высоту */
-    min-height: 250px;
+    order: 1; /* Картинка первой на мобильных */
 }
+
 .home-title {
     font-size: var(--h1-font-size);
     margin-bottom: var(--mb-0-25);
@@ -650,8 +650,12 @@ textarea.contact-input {
         grid-template-columns: max-content 1fr; /* Текст слева, остальное место справа */
         align-items: center;
     }
-    .home-content { order: 1; } /* Текст слева */
-    .home-visual { order: 2; } /* Картинка справа */
+    .home-content { 
+        order: 1; /* Текст слева */
+    }
+    .home-visual { 
+        order: 2; /* Картинка справа */
+    }
 
     .services-container {
         grid-template-columns: repeat(2, 1fr); /* Две колонки услуг */
@@ -777,13 +781,13 @@ textarea.contact-input {
     text-align: left; /* На десктопе текст влево */
     gap: 3rem; /* Отступ между колонками */
   }
-  .home-content {
-    padding-top: 1.5rem;
-    order: 1; /* Текстовый блок слева */
-    text-align: left; /* Текст слева для десктопа */
+  .home-content { 
+    order: 1; /* Текст первым (слева) на десктопе */
+    text-align: left; /* Восстанавливаем выравнивание для десктопа */
+    /* Если home-content был display:grid ошибочно, это свойство здесь не нужно */
   }
-  .home-visual {
-    order: 2; /* Визуальный блок справа */
+  .home-visual { 
+    order: 2; /* Картинка второй (справа) на десктопе */
     justify-self: end; /* Прижимаем визуал к правому краю его грид-ячейки */
     /* Для примера можно добавить мин. высоту */
     min-height: 250px;
