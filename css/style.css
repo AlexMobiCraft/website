@@ -267,8 +267,10 @@ img, svg {
 }
 
 .nav-list {
- grid-template-columns: repeat(3, 1fr);
+  display: flex;
   text-align: center;
+  /* Добавлен отступ между элементами списка на мобильных */
+  column-gap: 2rem; 
 }
 
 .nav-link {
@@ -678,7 +680,6 @@ textarea.contact-input {
   }
 
   .nav-menu {
-    align-items: center;
     display: flex;
     position: static;   /* Убираем fixed позиционирование */
     width: auto;        /* Ширина по содержимому */
