@@ -270,13 +270,17 @@ img, svg {
 .nav-menu {
  /* Стили для мобильного меню (скрыто по умолчанию) */
    position: fixed;
+   bottom: -100%; /* Изначально скрываем его далеко внизу */
    left: 0;
    width: 100%;
    background-color: var(--body-color);
-   padding: 2rem 1.5rem 4rem;
+   padding: 2rem 1.5rem 2rem; /* Уменьшаем padding-bottom */
    box-shadow: 0 -1px 4px rgba(0,0,0,.15);
    border-radius: 1.5rem 1.5rem 0 0;
    transition: .3s;
+   z-index: var(--z-fixed); /* Ставим z-index как у хедера или выше */
+   max-height: 75vh; /* Ограничиваем максимальную высоту, например 75% высоты экрана */
+   overflow-y: auto; /* Добавляем вертикальную прокрутку, если контент не помещается */
 }
 
 /* Показать меню */
