@@ -267,10 +267,7 @@ img, svg {
 }
 
 .nav-list {
-  display: flex;
-  text-align: center;
-  /* Добавлен отступ между элементами списка на мобильных */
-  column-gap: 2rem; 
+ grid-template-columns: repeat(3, 1fr);
 }
 
 .nav-link {
@@ -680,17 +677,14 @@ textarea.contact-input {
   }
 
   .nav-menu {
-    display: flex;
     position: static;   /* Убираем fixed позиционирование */
     width: auto;        /* Ширина по содержимому */
     background: none;   /* Убираем фон оверлея */
     padding: 0;         /* Убираем внутренние отступы оверлея */
     margin-left: auto;  /* Прижимаем меню вправо (если лого слева) */
-
-
-  /* Стили для кнопки переключения темы в десктопном режиме */
+    display: flex;
+ align-items: center; 
   .theme-switch {
- position: static;
     margin-left: 1.5rem; /* Добавляем отступ слева от меню */
     /* КЛЮЧЕВЫЕ СВОЙСТВА ДЛЯ ГОРИЗОНТАЛЬНОСТИ */
      column-gap: 2rem;
