@@ -267,6 +267,7 @@ img, svg {
 }
 
 .nav-list {
+ grid-template-columns: repeat(3, 1fr);
   text-align: center;
 }
 
@@ -274,7 +275,6 @@ img, svg {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: var(--small-font-size);
   font-weight: var(--font-medium);
   transition: .3s;
 }
@@ -677,8 +677,9 @@ textarea.contact-input {
   .nav-icon, .nav-close {
     display: none; /* Скрыть мобильные элементы */
   }
- 
+
   .nav-menu {
+    display: flex;
     position: static;   /* Убираем fixed позиционирование */
     width: auto;        /* Ширина по содержимому */
     background: none;   /* Убираем фон оверлея */
@@ -691,16 +692,10 @@ textarea.contact-input {
  position: static;
     margin-left: 1.5rem; /* Добавляем отступ слева от меню */
     /* КЛЮЧЕВЫЕ СВОЙСТВА ДЛЯ ГОРИЗОНТАЛЬНОСТИ */
-  }
-
-  /* Блок .nav-list больше не нужен, так как стили применены к .nav-menu */
-  /*
-  .nav-list {
-     display: flex;
      column-gap: 2rem;
   }
-  */
 
+ 
   .nav-link {
     /* flex-direction: row; -- это правило здесь не нужно */
     font-size: var(--normal-font-size);
