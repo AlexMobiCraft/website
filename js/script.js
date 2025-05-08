@@ -6,7 +6,7 @@ const navMenu = document.getElementById('nav-menu'),
 /* Показ меню */
 if(navToggle){
     navToggle.addEventListener('click', () =>{
-        navMenu.classList.add('show-menu');
+        navMenu.classList.toggle('show-menu');
     });
 }
 
