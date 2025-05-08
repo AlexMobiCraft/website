@@ -14,20 +14,23 @@
     <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
 </head>
 <body>
-    <button class="theme-switch"><i class="uil uil-moon button-icon"></i></button>
-
-    <header class="header" id="header"> <!-- ID добавлен -->
+    <header class="header" id="header"> 
         <nav class="nav container">
             <a href="#home" class="nav-logo">Алекс</a>
-            <ul class="nav-menu" id="nav-menu"> <!-- ID добавлен -->
-                <li class="nav-item"><a href="#home" class="nav-link active-link">Главная</a></li>
-                <li class="nav-item"><a href="#services" class="nav-link">Услуги</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link">Проекты</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Блог</a></li> <!-- Комментарий удален -->
-                <li class="nav-item"><a href="#contact" class="nav-link">Контакты</a></li>
-            </ul>
-            <div class="nav-toggle" id="nav-toggle"> <!-- ID добавлен -->
-                 <i class="uil uil-apps"></i> <!-- Иконка бургер-меню (Unicons) -->
+            
+            <div class="nav-right-group"> 
+                <ul class="nav-menu" id="nav-menu"> 
+                    <li class="nav-item"><a href="#home" class="nav-link active-link">Главная</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Услуги</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Проекты</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link">Блог</a></li> 
+                    <li class="nav-item"><a href="#contact" class="nav-link">Контакты</a></li>
+                </ul>
+                <button class="theme-switch" id="theme-switch"><i class="uil uil-moon button-icon"></i></button>
+            </div> 
+            
+            <div class="nav-toggle" id="nav-toggle"> 
+                 <i class="uil uil-apps"></i> 
             </div>
              <!-- Опциональная кнопка закрытия мобильного меню -->
              <!-- <div class="nav-close" id="nav-close">
@@ -59,10 +62,10 @@
                         </a>
                     </div>
                 </div>
-                <!-- Опционально: Изображение/иллюстрация -->
-                <!-- <div class="home-img">
-                    <svg ... > или <img src="images/tech-illustration.png" alt="Технологичная иллюстрация">
-                </div> -->
+                <div class="home-visual">
+                  <!-- Иллюстрация -->
+                  <img src="images/home_developer_illustration.svg" alt="Разработчик за работой" class="home-image">
+                </div>
             </div>
         </section>
 
@@ -206,21 +209,17 @@
     <footer class="footer">
         <div class="footer-container container">
             <p class="footer-copy">&copy; <span id="current-year"></span> Алекс. Все права защищены.</p>
-             <!-- Опционально: ссылки на соцсети -->
-             <!-- <div class="footer-socials">
-                 <a href="#" class="footer-social-link"><i class="uil uil-github"></i></a>
-                 <a href="#" class="footer-social-link"><i class="uil uil-linkedin"></i></a>
-                 <a href="#" class="footer-social-link"><i class="uil uil-telegram-alt"></i></a>
-             </div> -->
+            <!-- Можно добавить ссылки на соцсети или другую информацию -->
         </div>
     </footer>
+
+    <!-- ===== MAIN JS ===== -->
+    <script src="js/script.js"></script>
 
     <!-- Кнопка "Наверх" (опционально) -->
     <a href="#" class="scrollup" id="scroll-up">
         <i class="uil uil-arrow-up scrollup-icon"></i>
     </a>
 
-    <!-- Подключение JavaScript -->
-    <script src="js/script.js"></script>
 </body>
 </html>

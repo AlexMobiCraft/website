@@ -2,21 +2,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); /* Пример шрифта */
 
 :root {
-  /* Цвета (пример) */
-  --hue: 250; /* Фиолетовый */
-  --primary-color: hsl(var(--hue), 80%, 65%);
-  --primary-color-alt: hsl(var(--hue), 80%, 55%);
-  --primary-color-light: hsl(var(--hue), 90%, 90%);
+  /* Цвета (Teal & Amber) */
+  --hue-primary: 180; /* Teal */
+  --hue-accent: 35;   /* Amber */
 
-  --title-color: hsl(var(--hue), 10%, 20%);
-  --text-color: hsl(var(--hue), 10%, 40%);
-  --text-color-light: hsl(var(--hue), 10%, 60%);
+  --primary-color: hsl(var(--hue-primary), 60%, 45%);
+  --primary-color-alt: hsl(var(--hue-primary), 60%, 40%);
+  --primary-color-light: hsl(var(--hue-primary), 70%, 85%); /* Светлее для фонов/рамок */
+  --accent-color: hsl(var(--hue-accent), 90%, 55%);
+
+  --title-color: hsl(var(--hue-primary), 25%, 25%); /* Темнее, с оттенком основного */
+  --text-color: hsl(var(--hue-primary), 15%, 45%);
+  --text-color-light: hsl(var(--hue-primary), 15%, 65%);
   
-  --body-color: hsl(var(--hue), 20%, 95%);
-  --container-color: hsl(var(--hue), 0%, 100%);
+  --body-color: hsl(var(--hue-primary), 30%, 98%); /* Очень светлый с оттенком */
+  --container-color: hsl(0, 0%, 100%);
 
-  --scroll-bar-color: hsl(var(--hue), 10%, 85%);
-  --scroll-thumb-color: hsl(var(--hue), 10%, 70%);
+  --input-color: hsl(var(--hue-primary), 20%, 92%); /* Для полей ввода */
+
+  --scroll-bar-color: hsl(var(--hue-primary), 10%, 85%);
+  --scroll-thumb-color: hsl(var(--hue-primary), 10%, 70%);
 
   /* Шрифты */
   --body-font: 'Poppins', sans-serif;
@@ -30,6 +35,7 @@
   /* Насыщенность */
   --font-medium: 500;
   --font-semi-bold: 600;
+  --font-bold: 700; /* Добавим для выразительности */
 
   /* Отступы */
   --mb-0-25: .25rem;
@@ -61,18 +67,23 @@
 
 /*=============== ТЕМНАЯ ТЕМА ===============*/
 body.dark-theme {
-  --title-color: hsl(var(--hue), 10%, 80%);
-  --text-color: hsl(var(--hue), 10%, 70%);
-  --text-color-light: hsl(var(--hue), 10%, 50%);
+  --primary-color: hsl(var(--hue-primary), 55%, 50%); /* Чуть ярче для темной темы */
+  --primary-color-alt: hsl(var(--hue-primary), 55%, 45%);
+  --primary-color-light: hsl(var(--hue-primary), 50%, 30%);
+  /* Акцентный цвет остается таким же ярким */
 
-  --body-color: hsl(var(--hue), 20%, 15%);
-  --container-color: hsl(var(--hue), 20%, 20%);
-  --input-color: hsl(var(--hue), 20%, 25%);
+  --title-color: hsl(var(--hue-primary), 15%, 85%);
+  --text-color: hsl(var(--hue-primary), 10%, 70%);
+  --text-color-light: hsl(var(--hue-primary), 10%, 55%);
 
-  --scroll-bar-color: hsl(var(--hue), 10%, 30%);
-  --scroll-thumb-color: hsl(var(--hue), 10%, 40%);
+  --body-color: hsl(var(--hue-primary), 20%, 12%); /* Глубже темный */
+  --container-color: hsl(var(--hue-primary), 20%, 18%);
+  --input-color: hsl(var(--hue-primary), 20%, 22%);
 
-  background-image: url("/images/dark-fon.jpg"); /* Опционально, другое фон для темной темы */
+  --scroll-bar-color: hsl(var(--hue-primary), 10%, 30%);
+  --scroll-thumb-color: hsl(var(--hue-primary), 10%, 40%);
+
+  background-image: url("/images/dark-fon-alt.jpg"); /* Предположим, что будет новый фон */
 
 }
 
@@ -96,11 +107,12 @@ body {
   background-size: cover;
   background-attachment: fixed; /* Фон фиксирован при прокрутке */
   background-repeat: no-repeat;
+  line-height: 1.7; /* Улучшение читаемости */
 }
 
 h1, h2, h3, h4 {
   color: var(--title-color);
-  font-weight: var(--font-semi-bold);
+  font-weight: var(--font-semi-bold); /* Базовый полужирный для всех заголовков */
 }
 
 ul {
@@ -124,25 +136,6 @@ img, svg {
 
 /*=============== ПЕРЕИСПОЛЬЗУЕМЫЕ CSS КЛАССЫ ===============*/
 
-
-
-.section {
-  padding: 4rem 0 2rem; /* Увеличьте паддинги для больших экранов */
-}
-
-.section-title {
-  font-size: var(--h1-font-size);
-  color: var(--title-color);
-  text-align: center;
-}
-
-.section-subtitle {
-  display: block;
-  font-size: var(--small-font-size);
-  margin-bottom: var(--mb-3);
-  text-align: center;
-}
-
 /* Лэйаут */
 .container {
   max-width: 968px; /* Максимальная ширина контента */
@@ -161,17 +154,21 @@ img, svg {
 .button {
   display: inline-block;
   background-color: var(--primary-color);
-  color: #FFF;
-  padding: 1rem;
+  color: #FFF; /* Белый текст на основной кнопке */
+  padding: 1rem 1.75rem; /* Немного увеличим паддинги */
   border-radius: .5rem;
   font-weight: var(--font-medium);
-  transition: .3s;
-  border: none;
+  transition: .3s ease-in-out; /* Плавнее переход */
+  border: 2px solid transparent; /* Для консистентности с ghost */
   cursor: pointer;
+  text-transform: uppercase; /* Для акцента */
+  letter-spacing: 0.5px;
 }
 
 .button:hover {
   background-color: var(--primary-color-alt);
+  transform: translateY(-2px); /* Легкий эффект приподнятия */
+  box-shadow: 0 4px 10px hsla(var(--hue-primary), 60%, 45%, 0.3);
 }
 
 .button-icon {
@@ -183,6 +180,7 @@ img, svg {
 .button--flex {
   display: inline-flex;
   align-items: center;
+  gap: var(--mb-0-5); /* Отступ между текстом и иконкой */
 }
 
 .button--ghost {
@@ -191,17 +189,32 @@ img, svg {
     color: var(--primary-color);
 }
 .button--ghost:hover {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: var(--primary-color-light); /* Легкий фон при наведении */
+    color: var(--primary-color-alt);
+    /* box-shadow: 0 2px 8px hsla(var(--hue-primary), 60%, 45%, 0.2); */
+}
+
+/* Кнопка с акцентным цветом */
+.button--accent {
+    background-color: var(--accent-color);
+    color: hsl(var(--hue-accent), 80%, 15%); /* Темный текст на ярком акценте */
+    border-color: var(--accent-color);
+}
+
+.button--accent:hover {
+    background-color: hsl(var(--hue-accent), 90%, 50%);
+    color: hsl(var(--hue-accent), 80%, 10%);
+    box-shadow: 0 4px 10px hsla(var(--hue-accent), 90%, 55%, 0.3);
 }
 
 .button--link{
     padding: 0;
     background-color: transparent;
     color: var(--primary-color);
-}
-.button--link:hover{
-    color: var(--first-color-alt);
+    font-weight: var(--font-medium);
+    border: none;
+    text-transform: none; /* Убираем uppercase для ссылок-кнопок */
+    letter-spacing: normal;
 }
 
 /*=============== HEADER И NAV ===============*/
@@ -240,6 +253,9 @@ img, svg {
     border: none;
     padding: 0;
     margin-left: 1.5rem; /* Добавляем отступ слева от меню */
+    display: inline-block; /* Добавлено для устранения возможного lint warning */
+    position: relative; /* Для тонкой настройки положения */
+    top: -2px; /* Сдвигаем немного вверх, подберите значение */
 }
 
 .nav-toggle {
@@ -266,8 +282,10 @@ img, svg {
   bottom: 0;
 }
 
+/* Диагностика: комментируем .nav-list для проверки lint error 0da5ea0b-2563-42ca-a4fa-466350b799f0 */
 .nav-list {
   grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; /* Добавим gap для мобильного меню */
 }
 
 .nav-link {
@@ -278,7 +296,7 @@ img, svg {
   transition: .3s;
 }
 .nav-link:hover, .nav-link.active-link {
-  color: var(--first-color);
+  color: var(--primary-color);
 }
 
 .nav-icon {
@@ -286,7 +304,7 @@ img, svg {
   margin-bottom: var(--mb-0-5);
 }
 .nav-toggle:hover {
-    color: var(--first-color);
+    color: var(--primary-color);
 }
 
 
@@ -301,12 +319,22 @@ img, svg {
 /*=============== Стили для секций (Home, Services, Projects, Contact) ===============*/
 
 /* --- Home --- */
-.home-container {
-    gap: 1rem;
-    /* Можно добавить grid-template-columns для расположения текста и картинки */
+.home-section {
+    padding-top: 4rem; /* Дополнительный отступ сверху для первой секции */
 }
+
 .home-content {
-    /* Стили для текстового блока */
+    display: grid;
+    row-gap: 2rem; /* Отступ между текстом и визуалом на мобильных, если они друг под другом */
+    gap: 1.5rem;
+}
+.home-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 2; /* Визуальный блок второй на мобильных */
+    /* Для примера можно добавить мин. высоту */
+    min-height: 250px;
 }
 .home-title {
     font-size: var(--h1-font-size);
@@ -336,10 +364,6 @@ img, svg {
     display: flex;
     gap: 1rem; /* Расстояние между кнопками */
     flex-wrap: wrap; /* Перенос кнопок на моб */
-}
-/* Стили для изображения, если есть */
-.home-img {
-    /* ... */
 }
 
 /* --- Services --- */
@@ -389,11 +413,11 @@ img, svg {
     background-color: var(--container-color);
     border-radius: .5rem;
     overflow: hidden; /* Чтобы скруглить углы у изображения */
-    box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow .3s;
 }
 .project-item:hover {
-     box-shadow: 0 4px 12px rgba(0,0,0,.15);
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 .project-img {
     /* Стили для обертки изображения */
@@ -506,7 +530,7 @@ textarea.contact-input {
 /*=============== FOOTER ===============*/
 .footer { /* Обновлено: фон футера */
     padding-top: 2rem;
-    background-color: var(--first-color-second); /* Можно сделать отличным от фона */
+    background-color: var(--primary-color); /* Можно сделать отличным от фона */
     color: #fff;
 }
 .footer-container {
@@ -544,7 +568,7 @@ textarea.contact-input {
   transition: bottom .4s ease; /* Плавный переход для появления */
 }
 .scrollup:hover{
-  background-color: var(--first-color-alt);
+  background-color: var(--primary-color-alt);
 }
 .scrollup-icon{
   font-size: 1.5rem;
@@ -627,7 +651,7 @@ textarea.contact-input {
         align-items: center;
     }
     .home-content { order: 1; } /* Текст слева */
-    .home-img { order: 2; } /* Картинка справа */
+    .home-visual { order: 2; } /* Картинка справа */
 
     .services-container {
         grid-template-columns: repeat(2, 1fr); /* Две колонки услуг */
@@ -670,25 +694,36 @@ textarea.contact-input {
   }
   .nav {
     height: calc(3rem + 1.5rem); /* Увеличить высоту хедера */
-    column-gap: 1rem;
-    align-items: center; /* Выравниваем лого и меню по центру по вертикали */
+    display: flex; /* Убедимся, что это flex-контейнер */
+    justify-content: space-between; /* Распределение элементов */
+    align-items: center; /* Выровнять лого и меню по центру по вертикали */
+    /* column-gap: 1rem; -- удалим, т.к. space-between управляет основным пространством */
   }
-  .nav-icon, .nav-close {
-    display: none; /* Скрыть мобильные элементы */
+  .nav-icon, .nav-close, .nav-toggle { /* Добавлен .nav-toggle */
+    display: none !important; /* Скрыть мобильные элементы, !important для уверенности */
+  }
+
+  .nav-right-group { /* Новый класс */
+    display: flex;
+    align-items: center; /* Возвращаем center */
+    gap: 1.5rem; /* Отступ между меню и кнопкой темы */
+    padding: 0; /* Убрали горизонтальные отступы */
   }
 
   .nav-menu {
     position: static;   /* Убираем fixed позиционирование */
     width: auto;        /* Ширина по содержимому */
     background: none;   /* Убираем фон оверлея */
-    padding: 0;         /* Убираем внутренние отступы оверлея */
-    margin-left: auto;  /* Прижимаем меню вправо (если лого слева) */
+    padding: 0 1.5rem;    /* Установим горизонтальные отступы равными gap */
+    /* margin-left: auto; -- УДАЛЕНО */
     display: flex;
- align-items: center; 
+    align-items: center;
+    gap: 1.5rem; /* Расстояние между пунктами меню */
+  }
   .theme-switch {
-    margin-left: 1.5rem; /* Добавляем отступ слева от меню */
+    /* margin-left: 1.5rem; -- УДАЛЕНО, управляется gap в nav-right-group */
     /* КЛЮЧЕВЫЕ СВОЙСТВА ДЛЯ ГОРИЗОНТАЛЬНОСТИ */
-     column-gap: 2rem;
+     /* column-gap: 2rem; -- Удалено, т.к. здесь не нужно */
   }
 
  
@@ -698,99 +733,173 @@ textarea.contact-input {
     /* Уточненные стили для ссылок на десктопе */
     color: var(--text-color); /* Обычный цвет */
     font-weight: var(--font-medium);
-    padding: 0.5rem 0; /* Добавим немного паддинга для удобства клика */
-    transition: color .3s;
+    padding-top: 0.5rem; /* Вертикальные отступы для ссылок меню */
+    padding-bottom: 0.5rem;
+    /* display: inline-block; /* Можно раскомментировать, если display:flex от мобильных стилей мешает */
   }
-   .nav-link:hover {
-       color: var(--first-color); /* Цвет при наведении */
-   }
-   /* Стиль активной ссылки */
-   .nav-link.active-link {
-       color: var(--first-color);
-       position: relative; /* Для возможного подчеркивания */
-   }
-    /* Опциональное подчеркивание активной ссылки */
-   .nav-link.active-link::after{ /* Изменено на ::after */
-        content: '';
-        position: absolute;
-        bottom: -4px; /* Настройте положение */
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: var(--first-color);
-        border-radius: 1px; /* Слегка скруглим */
-   }
 
+  .nav-link:hover {
+    color: var(--primary-color); /* Цвет при наведении */
+  }
+  /* Стиль активной ссылки */
+  .nav-link.active-link {
+    color: var(--primary-color);
+    position: relative; /* Для возможного подчеркивания */
+  }
+  /* Опциональное подчеркивание активной ссылки */
+  .nav-link.active-link::after{ /* Изменено на ::after */
+    content: '';
+    position: absolute;
+    bottom: -4px; /* Настройте положение */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    border-radius: 1px; /* Слегка скруглим */
+  }
 
   .nav-link i { /* Скрыть иконки в десктопном меню, если не нужны */
-      display: none;
+    display: none;
+  }
+
+  /* --- Navigation --- */
+  .nav {
+    height: 3rem; /* Высота хедера */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   /* --- Остальные стили для десктопа --- */
   .home-container {
-       gap: 3rem;
-       align-items: center; /* Выровнять текст и возможную картинку */
+    grid-template-columns: repeat(2, 1fr); /* Две равные колонки */
+    align-items: center; /* Выровнять текст и возможную картинку */
+    text-align: left; /* На десктопе текст влево */
+    gap: 3rem; /* Отступ между колонками */
   }
   .home-content {
-      padding-top: 1.5rem;
+    padding-top: 1.5rem;
+    order: 1; /* Текстовый блок слева */
+    text-align: left; /* Текст слева для десктопа */
+  }
+  .home-visual {
+    order: 2; /* Визуальный блок справа */
+    justify-self: end; /* Прижимаем визуал к правому краю его грид-ячейки */
+    /* Для примера можно добавить мин. высоту */
+    min-height: 250px;
   }
   .home-description { max-width: 450px;}
 
   .services-container {
-        grid-template-columns: repeat(3, 250px); /* Можно фиксированную ширину */
-        justify-content: center; /* Центрировать карточки, если их меньше 3 */
-        gap: 2rem; /* Проверить значение gap */
+    grid-template-columns: repeat(3, 250px); /* Можно фиксированную ширину */
+    justify-content: center; /* Центрировать карточки, если их меньше 3 */
+    gap: 2rem; /* Проверить значение gap */
   }
   .service-item { padding: 2.5rem 1.5rem; }
 
-   .projects-container {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Сделать адаптивнее */
-        gap: 2rem; /* Проверить значение gap */
+  .projects-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Сделать адаптивнее */
+    gap: 2rem; /* Проверить значение gap */
   }
 
   .contact-container {
-      grid-template-columns: 1fr 1fr; /* Убедимся, что 2 колонки */
-      align-items: start; /* Выровнять начало форм и инфо */
-      gap: 4rem; /* Проверить значение gap */
+    grid-template-columns: 1fr 1fr; /* Убедимся, что 2 колонки */
+    align-items: start; /* Выровнять начало форм и инфо */
+    gap: 4rem; /* Проверить значение gap */
   }
 
   .footer-container {
-      padding: 2rem 0;
-      display: flex; /* Горизонтально для копирайта и соцсетей (если будут) */
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; /* Перенос на маленьких экранах */
-      gap: 1rem;
+    padding: 2rem 0;
+    display: flex; /* Горизонтально для копирайта и соцсетей (если будут) */
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Перенос на маленьких экранах */
+    gap: 1rem;
   }
-   .scrollup{
-        right: 2rem;
-   }
-   .show-scroll{ /* Показать кнопку Наверх */
-       bottom: 3rem;
-   }
+  .scrollup{
+    right: 2rem;
+  }
+  .show-scroll{ /* Показать кнопку Наверх */
+    bottom: 3rem;
+  }
 
-    /* Стили для блога на десктопе */
-    .blog-container {
-        max-width: 900px;
-        padding: 0;
-    }
+  /* Стили для блога на десктопе */
+  .blog-container {
+    max-width: 900px;
+    padding: 0;
+  }
+
+  /* Уточняем стили для ссылок меню на десктопе */
+  .nav-link {
+    font-size: var(--normal-font-size); /* Стандартный размер шрифта для десктопного меню */
+    padding-top: 0.5rem; /* Вертикальные отступы для ссылок меню */
+    padding-bottom: 0.5rem;
+    /* display: inline-block; /* Можно раскомментировать, если display:flex от мобильных стилей мешает */
+  }
+
+  /* Стили для кнопки переключения темы на десктопе */
+  .theme-switch {
+    display: inline-flex; /* Для центрирования иконки внутри */
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.5rem; /* Синхронизируем с nav-link */
+    padding-bottom: 0.5rem; /* Синхронизируем с nav-link */
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background: transparent; /* Убираем фон кнопки по умолчанию */
+    border: none; /* Убираем рамку кнопки по умолчанию */
+    color: var(--text-color); /* Цвет иконки как у текста */
+    cursor: pointer;
+    position: relative; /* Для тонкой настройки положения */
+    top: -2px; /* Сдвигаем немного вверх, подберите значение */
+  }
+  .theme-switch .button-icon {
+    font-size: var(--normal-font-size); /* Размер иконки как у текста меню */
+    margin-left: 0; /* Убираем отступ слева для иконки, если он был от общего класса button-icon */
+    display: flex; /* Для лучшего центрирования самой иконки */
+    align-items: center; /* Для лучшего центрирования самой иконки */
+  }
 
 }
 
 /* --- Остальные медиа-запросы ниже без изменений --- */
 @media screen and (min-width: 1024px) {
-    .container {
-        max-width: 1000px; /* Можно чуть увеличить контейнер */
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .home-container { gap: 5rem;}
+  .container {
+    max-width: 1000px; /* Можно чуть увеличить контейнер */
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .home-container { gap: 5rem;}
 }
-@media screen and (min-width: 1024px) {
-    .container {
-        padding-left: 0; /* Убрать боковые паддинги у контейнера */
-        padding-right: 0;
-    }
-    /* Дополнительные настройки для очень больших экранов, если нужно */
-    .home-container { gap: 5rem;}
+
+/*===== HOME VISUAL =====*/
+.home-visual {
+  order: 1; /* По умолчанию (мобильные) визуал идет первым */
+  justify-self: center; /* Центрируем визуал по горизонтали на мобильных */
+  /* Можно добавить margin-bottom для отступа от текста на мобильных, если нужно */
+}
+
+.home-image {
+  width: 100%; /* Изображение будет занимать всю ширину контейнера .home-visual */
+  max-width: 450px; /* Максимальная ширина изображения, чтобы не было слишком большим на десктопах */
+  height: auto; /* Сохраняем пропорции */
+  display: block; /* Убираем возможные отступы снизу у inline-block изображений */
+}
+
+/*===== SERVICES =====*/
+.services-container {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Адаптивная сетка */
+  gap: 2rem;
+}
+
+/*===== SVG ИЛЛЮСТРАЦИЯ =====*/
+/* Удалить неиспользуемый блок SVG ИЛЛЮСТРАЦИЯ, который был добавлен ранее */
+
+/* EOF marker comment and newline */
+
+/* Когда страница проскроллена, добавляем класс .scroll-header к header */
+.scroll-header {
+  box-shadow: 0 1px 2px rgba(0,0,0,.05); /* Слегка уменьшим тень */
+  background-color: var(--body-color); /* Фон становится непрозрачным */
+  border-bottom: 1px solid rgba(0,0,0,0.1); /* Добавляем четкую нижнюю границу */
 }
