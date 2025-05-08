@@ -273,7 +273,6 @@ img, svg {
 
 .nav-link {
   display: flex;
-  flex-direction: column;
   align-items: center;
   font-weight: var(--font-medium);
   transition: .3s;
@@ -679,6 +678,7 @@ textarea.contact-input {
   }
 
   .nav-menu {
+    align-items: center;
     display: flex;
     position: static;   /* Убираем fixed позиционирование */
     width: auto;        /* Ширина по содержимому */
