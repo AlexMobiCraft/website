@@ -277,15 +277,19 @@ img, svg {
    padding: 2rem 1.5rem 2rem; /* Уменьшаем padding-bottom */
    box-shadow: 0 -1px 4px rgba(0,0,0,.15);
    border-radius: 1.5rem 1.5rem 0 0;
-   transition: .3s;
+   transition: .3s; /* Для opacity тоже нужна будет плавная анимация */
    z-index: var(--z-fixed); /* Ставим z-index как у хедера или выше */
    max-height: 75vh; /* Ограничиваем максимальную высоту, например 75% высоты экрана */
    overflow-y: auto; /* Добавляем вертикальную прокрутку, если контент не помещается */
+   visibility: hidden;
+   opacity: 0;
 }
 
 /* Показать меню */
 .show-menu {
   bottom: 0;
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Диагностика: комментируем .nav-list для проверки lint error 0da5ea0b-2563-42ca-a4fa-466350b799f0 */
