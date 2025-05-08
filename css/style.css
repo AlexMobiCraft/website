@@ -684,7 +684,8 @@ textarea.contact-input {
     column-gap: 1rem;
     align-items: center; /* Выравниваем лого и меню по центру по вертикали */
   }
-  .nav-icon, .nav-close, .nav-toggle {
+  .nav-icon,
+  .nav-close {
     display: none; /* Скрыть мобильные элементы */
   }
 
