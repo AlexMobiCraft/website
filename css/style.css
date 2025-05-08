@@ -242,14 +242,15 @@ img, svg {
     margin-left: 1.5rem; /* Добавляем отступ слева от меню */
 }
 
-/* Переключатель темы */
-.nav__theme-button {
-  font-size: 1.5rem;
-  cursor: pointer;
+.nav-toggle {
+ color: var(--title-color);
+  font-weight: var(--font-medium);
+ font-size: 1.5rem;
+ cursor: pointer;
 }
 
 .nav-menu {
-  /* Стили для мобильного меню (скрыто по умолчанию) */
+ /* Стили для мобильного меню (скрыто по умолчанию) */
    position: fixed;
    bottom: -100%; /* Скрываем под экраном */
    left: 0;
@@ -288,13 +289,6 @@ img, svg {
 .nav-icon {
   font-size: 1.2rem;
   margin-bottom: var(--mb-0-5);
-}
-.nav-close,
-.nav-toggle {
-  color: var(--title-color);
-  font-weight: var(--font-medium);
-  font-size: 1.5rem;
-  cursor: pointer;
 }
 .nav-toggle:hover {
     color: var(--first-color);
@@ -684,8 +678,7 @@ textarea.contact-input {
     column-gap: 1rem;
     align-items: center; /* Выравниваем лого и меню по центру по вертикали */
   }
-  .nav-icon, .nav-close,
-  .nav-close {
+  .nav-icon, .nav-close {
     display: none; /* Скрыть мобильные элементы */
   }
 
@@ -702,11 +695,10 @@ textarea.contact-input {
 
   /* Стили для кнопки переключения темы в десктопном режиме */
   .theme-switch {
- position: static; /* Убираем fixed позиционирование */
+ position: static;
     margin-left: 1.5rem; /* Добавляем отступ слева от меню */
     /* КЛЮЧЕВЫЕ СВОЙСТВА ДЛЯ ГОРИЗОНТАЛЬНОСТИ */
-    display: flex;         /* Делаем пункты li горизонтальными */
-  /* ========================================== */
+  }
 
   /* Блок .nav-list больше не нужен, так как стили применены к .nav-menu */
   /*
