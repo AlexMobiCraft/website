@@ -73,7 +73,7 @@
   opacity: 1;
 }
 
-.nav-list {
+.nav-list-items {
   display: grid; /* Используем grid для мобильного меню */
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem; 
@@ -144,7 +144,7 @@
   .nav-menu {
     padding: 2rem .5rem 4rem; /* Уменьшаем боковые отступы */
   }
-  .nav-list {
+  .nav-list-items {
     column-gap: 0; /* Убираем или уменьшаем gap, если не помещается */
   }
 }
