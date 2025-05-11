@@ -221,11 +221,11 @@ img, svg {
 .header {
   width: 100%;
   position: fixed;
-  bottom: 0; /* Или top: 0; */
+  top: 0; /* Теперь всегда сверху */
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--body-color);
-  box-shadow: 0 -1px 4px rgba(0,0,0,.15); /* Тень, если меню снизу */
+  box-shadow: 0 1px 4px hsla(var(--hue-primary), 68%, 12%, .1); /* Тень снизу для верхнего меню */
 }
 
 .nav {
@@ -769,7 +769,7 @@ textarea.contact-input {
     /* Уточненные стили для ссылок на десктопе */
     color: var(--text-color); /* Обычный цвет */
     font-weight: var(--font-medium);
-    padding-top: 0.5rem; /* Вертикальные отступы для ссылок меню */
+    padding-top: 0.5rem; /* Вертикальные отступы для ссылок */
     padding-bottom: 0.5rem;
     /* display: inline-block; /* Можно раскомментировать, если display:flex от мобильных стилей мешает */
   }
@@ -938,4 +938,117 @@ textarea.contact-input {
   box-shadow: 0 1px 2px rgba(0,0,0,.05); /* Слегка уменьшим тень */
   background-color: var(--body-color); /* Фон становится непрозрачным */
   border-bottom: 1px solid rgba(0,0,0,0.1); /* Добавляем четкую нижнюю границу */
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body {
+    margin: 0; /* Убедимся, что нет отступов у body, мешающих header */
+    padding-top: var(--header-height); /* Добавляем отступ сверху, равный высоте хедера */
+  }
+
+  .header {
+    bottom: auto; /* Убираем нижнее позиционирование, если оно осталось от мобильных */
+    /* top: 0; -- уже установлено глобально */ 
+    /* box-shadow: 0 1px 4px hsla(var(--hue-primary), 68%, 12%, .1); -- уже установлено глобально */
+  }
+
+  .nav {
+    height: var(--header-height); /* Высота навигации равна высоте хедера */
+    justify-content: space-between; /* Распределяем лого и группу меню/темы по краям */
+    align-items: center;
+    padding: 0 1rem; /* Небольшие отступы по бокам для nav */
+  }
+
+  .nav-logo {
+    display: block; /* Показываем логотип */
+  }
+
+  .nav-right-group { /* Контейнер для меню и кнопки темы */
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem; /* Расстояние между меню и кнопкой темы */
+  }
+
+  .nav-menu {
+    position: static;
+    width: auto;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    max-height: none;
+    overflow-y: visible;
+    visibility: visible;
+    opacity: 1;
+    bottom: auto; /* Сброс мобильного свойства */
+    left: auto;   /* Сброс мобильного свойства */
+    /* margin-left: auto; -- Убрано, управляется через .nav-right-group и .nav */
+  }
+
+  /* Класс .show-menu не должен влиять на десктоп */
+  .show-menu {
+      bottom: auto; 
+      visibility: visible; /* Если был hidden от .nav-menu */
+      opacity: 1;        /* Если был 0 от .nav-menu */
+  }
+
+  .nav-list {
+    display: flex;
+    column-gap: 2rem;
+    grid-template-columns: none; /* Отменяем грид для мобильных */
+    padding: 0; /* Убираем паддинги, если были для мобильного */
+  }
+  
+  .nav-item {
+    margin-bottom: 0;
+  }
+
+  .nav-link {
+    flex-direction: row;
+    padding: 0.5rem 0; /* Небольшие вертикальные отступы */
+    color: var(--text-color); /* Цвет по умолчанию */
+  }
+  .nav-link:hover, .nav-link.active-link {
+    color: var(--primary-color);
+  }
+
+  .nav-icon {
+    margin-bottom: 0;
+    margin-right: var(--mb-0-25);
+    font-size: 1.1rem;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .theme-switch {
+    position: static;
+    font-size: 1.3rem; /* Можно чуть увеличить для десктопа */
+    color: var(--title-color); /* Чтобы совпадал с лого по цвету */
+  }
+
+  /* Компенсация высоты фиксированного хедера для секций */
+  /* body уже имеет padding-top, так что секциям он может не понадобиться, */
+  /* либо нужен меньший, если у них свои отступы. */
+  /* Проверим и при необходимости раскомментируем/скорректируем. */
+  /* .home, .services, .projects, .contact {
+    padding-top: 1.5rem; /* Дополнительный отступ к тому, что уже есть от body */
+  /*}*/
+  
+  /* Если у секции уже есть свой padding-top, то padding-top на body может быть достаточен. */
+  /* Например, .home секция часто имеет больший верхний отступ. */
+  .section {
+    padding-top: 3rem; /* Стандартный отступ секции, body уже отодвинул контент */
+    padding-bottom: 3rem;
+  }
+  .home {
+      padding-top: 4rem; /* Для первой секции можно сделать отступ побольше */
+  }
+
 }
