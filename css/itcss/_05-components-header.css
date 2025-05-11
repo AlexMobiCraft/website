@@ -5,12 +5,14 @@
 .header {
   width: 100%;
   position: fixed;
-  top: 0; /* По умолчанию хедер всегда сверху */
+  bottom: 0; /* хедер внизу на мобильных */
+  top: auto; /* СТАЛО */
   left: 0;
   z-index: var(--z-fixed);
-  background-color: var(--body-color); /* Фон наследуется от body, но может быть переопределен при скролле */
-  box-shadow: 0 1px 4px hsla(var(--hue-primary), 30%, 8%, .1); /* Тень для верхнего меню */
-  transition: background-color .3s, box-shadow .3s; /* Плавность для scroll-header */
+  background-color: var(--body-color);
+  box-shadow: 0 -1px 4px hsla(var(--hue-primary), 30%, 8%, .1); /* тень сверху */
+  border-radius: 1.5rem 1.5rem 0 0; /* скругление для нижнего хедера */
+  transition: background-color .3s, box-shadow .3s, top .3s, bottom .3s, border-radius .3s;
 }
 
 .nav {
@@ -54,8 +56,8 @@
   width: 100%;
   background-color: var(--body-color);
   padding: 2rem 1.5rem 4rem; /* Внутренние отступы */
-  box-shadow: 0 -1px 4px hsla(var(--hue-primary), 30%, 8%, .15);
-  border-radius: 1.5rem 1.5rem 0 0;
+  box-shadow: 0 -1px 4px hsla(var(--hue-primary), 30%, 8%, .15); /* Тень остается сверху панели меню */
+  border-radius: 0; /* Убрали радиус */
   transition: bottom .3s, visibility .3s, opacity .3s;
   z-index: var(--z-fixed);
   max-height: 75vh; 
@@ -66,7 +68,7 @@
 
 /* Показать меню (мобильное) */
 .show-menu {
-  bottom: 0;
+  bottom: var(--header-height); /* меню открывается НАД хедером */
   visibility: visible;
   opacity: 1;
 }
@@ -151,14 +153,19 @@
 /* Для средних устройств (планшеты) и выше - переход к верхнему меню */
 @media screen and (min-width: 768px) {
   .header {
-    top: 0;
-    bottom: auto; /* Убираем привязку к низу, если была */
-    /* box-shadow: 0 1px 4px hsla(var(--hue-primary), 30%, 8%, .1); /* Тень для верхнего меню */
+    top: 0; /* Возвращаем хедер наверх */
+    bottom: auto; 
+    box-shadow: 0 1px 4px hsla(var(--hue-primary), 30%, 8%, .1); /* Возвращаем тень снизу */
+    border-radius: 0; /* Убираем скругление */
   }
 
   .nav {
     height: calc(var(--header-height) + 1.5rem); /* Увеличиваем высоту хедера */
     column-gap: 1rem; /* Отступ между лого, меню и переключателем темы */
+  }
+
+  .nav-logo-text { /* Скрываем текст логотипа на десктопе */
+    display: none;
   }
 
   .nav-logo-icon,
@@ -183,7 +190,7 @@
     bottom: auto;      
     left: auto;        
     box-shadow: none;  
-    border-radius: 0;  
+    border-radius: 0;  /* Убедимся, что радиуса нет */
     max-height: none;  
     overflow-y: visible; 
   }
