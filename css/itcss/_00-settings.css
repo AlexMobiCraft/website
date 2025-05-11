@@ -104,5 +104,5 @@ body.dark-theme {
   --scroll-bar-color: hsl(var(--hue-primary), 10%, 30%);
   --scroll-thumb-color: hsl(var(--hue-primary), 10%, 40%);
 
-  background-image: url("/images/dark-fon-alt.jpg"); /* Предположим, что будет новый фон */
+  /* background-image: url("/images/dark-fon-alt.jpg"); */ /* Предположим, что будет новый фон */
 }

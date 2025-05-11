@@ -1,7 +1,3 @@
-body {
-    background-color: red !important;
-}
-
 /*=============== ITCSS LAYERS ===============*/
 @import url('itcss/_00-settings.css');
 @import url('itcss/_01-tools.css');
