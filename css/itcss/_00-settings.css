@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+/*=============== 00. SETTINGS ===============*/
+/* Глобальные переменные, конфигурация, импорт шрифтов */
+
+/* --- Шрифты --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://unicons.iconscout.com/release/v4.0.0/css/line.css');
+
+/* --- CSS Переменные --- */
+:root {
+  /* Высота хедера (для компенсации) */
+  --header-height: 3.5rem; /* 56px, было 3rem */
+
+  /* Основные цвета (Teal & Amber) */
+  --hue-primary: 170; /* Бирюзовый оттенок (Teal) */
+  --hue-secondary: 30; /* Янтарный оттенок (Amber) - для акцентов, если понадобится */
+
+  --primary-color: hsl(var(--hue-primary), 60%, 50%); /* Teal */
+  --primary-color-alt: hsl(var(--hue-primary), 60%, 45%); /* Более темный Teal для hover */
+  --primary-color-light: hsl(var(--hue-primary), 60%, 85%); /* Очень светлый Teal для фонов */
+  
+  --secondary-color: hsl(var(--hue-secondary), 80%, 55%); /* Amber */
+  --secondary-color-alt: hsl(var(--hue-secondary), 80%, 50%); /* Темнее Amber */
+
+  /* Текстовые цвета */
+  --title-color: hsl(var(--hue-primary), 20%, 25%); /* Темно-серый с бирюзовым оттенком для заголовков */
+  --text-color: hsl(var(--hue-primary), 15%, 45%); /* Серый с бирюзовым оттенком для основного текста */
+  --text-color-light: hsl(var(--hue-primary), 10%, 65%); /* Более светлый серый */
+  --input-color: hsl(var(--hue-primary), 20%, 80%); /* Цвет для полей ввода */
+
+  /* Цвета фона и контейнеров */
+  --body-color: hsl(var(--hue-primary), 30%, 97%); /* Очень светлый, почти белый с бирюзовым оттенком */
+  --container-color: #FFFFFF; /* Белый для контейнеров, карточек */
+  --container-color-alt: hsl(var(--hue-primary), 30%, 92%); /* Альтернативный фон контейнера, чуть темнее body */
+  --border-color: hsl(var(--hue-primary), 25%, 85%); /* Цвет границ */
+
+  /* Цвета для скроллбара */
+  --scroll-bar-color: hsl(var(--hue-primary), 10%, 85%);
+  --scroll-thumb-color: hsl(var(--hue-primary), 10%, 70%);
+
+  /* Шрифты и типографика */
+  --body-font: 'Poppins', sans-serif; /* Шрифт по умолчанию */
+  --title-font: 'Roboto', sans-serif; /* Шрифт для заголовков, если нужен другой */
+  
+  --biggest-font-size: 2.5rem;
+  --h1-font-size: 2rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --smaller-font-size: 0.813rem;
+
+  /* Насыщенность шрифта */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /* Отступы */
+  --mb-0-25: .25rem;
+  --mb-0-5: .5rem;
+  --mb-0-75: .75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /* z-index */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000; 
+}
+
+/* Адаптация размера шрифта для больших экранов */
+@media screen and (min-width: 968px) {
+  :root {
+    --h1-font-size: 3rem;
+    --h2-font-size: 1.75rem;
+    --h3-font-size: 1.5rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/* Переменные для темной темы */
+body.dark-theme {
+  --primary-color: hsl(var(--hue-primary), 55%, 50%); /* Чуть ярче для темной темы */
+  --primary-color-alt: hsl(var(--hue-primary), 55%, 45%);
+  --primary-color-light: hsl(var(--hue-primary), 50%, 30%);
+  /* Акцентный цвет остается таким же ярким */
+
+  --title-color: hsl(var(--hue-primary), 15%, 85%);
+  --text-color: hsl(var(--hue-primary), 10%, 70%);
+  --text-color-light: hsl(var(--hue-primary), 10%, 55%);
+
+  --body-color: hsl(var(--hue-primary), 20%, 12%); /* Глубже темный */
+  --container-color: hsl(var(--hue-primary), 20%, 18%);
+  --input-color: hsl(var(--hue-primary), 20%, 22%); /* Было --container-color-alt, --border-color, --input-color в старой версии _00-settings.css, заменяем на то, что было в style.css */
+
+  --scroll-bar-color: hsl(var(--hue-primary), 10%, 30%);
+  --scroll-thumb-color: hsl(var(--hue-primary), 10%, 40%);
+
+  background-image: url("/images/dark-fon-alt.jpg"); /* Предположим, что будет новый фон */
+}

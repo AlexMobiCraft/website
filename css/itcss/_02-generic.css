@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/*=============== 02. GENERIC ===============*/
+/* Сброс стилей (reset/normalize), box-sizing, базовые стили для html, body. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Глобальный плавный переход */
+}
+
+html {
+  scroll-behavior: smooth; /* Плавная прокрутка */
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  line-height: 1.7; /* Улучшение читаемости */
+}
+
+ul {
+  list-style: none; /* Убираем стандартные маркеры */
+  /* padding и margin уже сброшены через * */
+}
+
+a {
+  text-decoration: none; /* Убираем подчеркивание по умолчанию */
+  color: var(--text-color); /* Наследует цвет текста по умолчанию, компоненты могут переопределять */
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Убирает лишнее пространство под изображением */
+}

@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+/*=============== 03. ELEMENTS ===============*/
+/* Стили для "голых" HTML-тегов (h1, p, a, ul и т.д.). */
+
+body {
+  /* Отступ снизу для компенсации фиксированного меню (если меню внизу на мобильных) 
+     Или для общего отступа контента от нижней части viewport */
+  margin-bottom: var(--header-height); /* Используем переменную для высоты хедера */
+  /* Стили для глобального фонового изображения, если нужно */
+  /* background-image: url("/images/light-fon-alt.jpg"); */ /* Пример, если нужно */
+  /* background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat; */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold); /* Базовый полужирный для всех заголовков */
+  line-height: 1.3; /* Для лучшей читаемости заголовков */
+}
+
+/* Размеры шрифтов для заголовков (уже определены в :root, здесь для примера, если бы не были) */
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+}
+
+/* Специфичные стили для ссылок, если они отличаются от базовых в _02-generic.css */
+/* a {
+  color: var(--primary-color); 
+} */
+
+/* Стили для параграфов, если нужны специфичные */
+/* p {
+  margin-bottom: var(--mb-1);
+} */
+
+/* --- Стили для Scroll Bar --- */
+::-webkit-scrollbar {
+  width: .60rem;
+  background-color: var(--scroll-bar-color);
+  border-radius: .5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-thumb-color);
+  border-radius: .5rem;
+}

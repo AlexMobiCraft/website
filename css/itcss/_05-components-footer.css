@@ -1,0 +1,63 @@
+/*=============== COMPONENTS: FOOTER ===============*/
+
+.footer {
+    background-color: var(--primary-color-alt); /* Используем альтернативный основной цвет для фона */
+    padding-top: 2rem; /* Отступ сверху */
+}
+
+.footer-container {
+    padding-bottom: 2rem; /* Отступ снизу внутри контейнера */
+    text-align: center; /* Центрируем текст по умолчанию */
+}
+
+.footer-title {
+    font-size: var(--h2-font-size);
+    color: var(--container-color); /* Контрастный цвет для заголовка на фоне футера */
+    margin-bottom: var(--mb-0-5);
+}
+
+.footer-subtitle {
+    font-size: var(--normal-font-size);
+    color: var(--body-bg); /* Более светлый оттенок для подзаголовка */
+    margin-bottom: var(--mb-2);
+}
+
+.footer-copy {
+    font-size: var(--smaller-font-size);
+    color: var(--container-color); /* Контрастный цвет */
+    border-top: 1px solid var(--primary-color-dark); /* Разделитель */
+    padding-top: 1.5rem;
+    margin-top: 2rem; /* Отступ перед копирайтом */
+}
+
+/* --- Адаптивность для Footer --- */
+
+/* Планшеты */
+@media screen and (min-width: 568px) {
+    .footer-container {
+        padding: 2rem 0; /* Скорректируем отступы */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Для случая, если контента много */
+        gap: 1rem; /* Отступ между элементами, если они в ряд */
+    }
+
+    .footer-title,
+    .footer-subtitle {
+        margin-bottom: 0; /* Убираем нижний отступ, если элементы в ряд */
+        text-align: left; /* Выравнивание по левому краю для заголовка и подзаголовка */
+    }
+
+     .footer-copy {
+        width: 100%; /* Копирайт на всю ширину под основными элементами */
+        margin-top: 1.5rem; /* Отступ сверху для копирайта */
+        padding-top: 1.5rem;
+        text-align: center; /* Копирайт по центру */
+    }
+}
+
+/* Большие десктопы */
+/* @media screen and (min-width: 992px) {
+    Можно добавить стили, если требуется особое поведение на очень больших экранах
+} */

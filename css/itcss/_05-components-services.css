@@ -1,0 +1,76 @@
+/*=============== COMPONENTS: SERVICES ===============*/
+
+.services-container {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Адаптивная сетка по умолчанию */
+    gap: 2rem;
+}
+
+.service-item {
+    background-color: var(--container-color);
+    padding: 2rem 1.5rem;
+    border-radius: .5rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    transition: transform .3s, box-shadow .3s; /* Добавим transition для box-shadow */
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,.15); /* Улучшим тень при наведении */
+}
+
+.service-icon {
+    font-size: 2rem; /* Можно увеличить или сделать переменной */
+    color: var(--primary-color);
+    margin-bottom: var(--mb-1);
+    display: block; /* Иконка как блочный элемент для отступов */
+}
+
+.service-title {
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-0-5);
+    color: var(--title-color); /* Убедимся, что используется цвет заголовков */
+}
+
+.service-description {
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-1);
+    line-height: 1.6; /* Улучшим читаемость */
+}
+
+.service-tech {
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+}
+
+.service-tech b {
+    color: var(--text-color); /* Используем основной цвет текста для выделения */
+    font-weight: var(--font-medium);
+}
+
+/* --- Адаптивность для Services --- */
+
+/* Планшеты */
+@media screen and (min-width: 576px) { /* Медиа-запрос из style.css */
+    .services-container {
+        grid-template-columns: repeat(2, 1fr); /* Две колонки услуг */
+    }
+}
+
+/* Десктопы */
+@media screen and (min-width: 768px) { /* Медиа-запрос из style.css */
+    .services-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Возвращаем адаптивность, т.к. 3 может быть лучше */
+        justify-content: center; /* Центрировать карточки, если их меньше чем помещается */
+    }
+    .service-item { 
+        padding: 2.5rem 1.5rem; /* Немного увеличим паддинг */
+    }
+}
+
+/* Большие десктопы (если нужно, например, 3 или 4 в ряд) */
+/* @media screen and (min-width: 992px) {
+    .services-container {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+} */

@@ -1,0 +1,112 @@
+/*=============== COMPONENTS: CONTACT ===============*/
+
+.contact-container {
+    grid-template-columns: 1fr; /* Одна колонка на мобильных по умолчанию */
+    gap: 3rem;
+}
+
+.contact-information {
+    display: flex;
+    align-items: center; /* Выравниваем иконку и текст по центру */
+    margin-bottom: var(--mb-2);
+}
+
+.contact-icon {
+    font-size: 2rem; /* Размер иконки */
+    color: var(--primary-color);
+    margin-right: var(--mb-0-75);
+}
+
+.contact-title { /* Для "Email", "Телефон" и т.д. */
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+}
+
+.contact-subtitle { /* Для самого адреса email, номера телефона */
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+}
+
+.contact-subtitle a {
+    color: var(--text-color-light);
+    text-decoration: none; /* Убираем подчеркивание по умолчанию */
+    transition: color .3s;
+}
+
+.contact-subtitle a:hover {
+    color: var(--primary-color);
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* --- Форма --- */
+.contact-form {
+    width: 100%;
+}
+
+.contact-inputs { /* Контейнер для группы полей ввода */
+    display: grid; /* Используем grid для полей */
+    grid-template-columns: 1fr; /* По одному полю в ряд на мобильных */
+    gap: 1.5rem; /* Отступ между полями */
+    margin-bottom: var(--mb-2);
+}
+
+.contact-content { /* Обертка для label + input/textarea */
+    background-color: var(--input-color); /* Цвет фона из переменных */
+    border-radius: .5rem;
+    padding: .75rem 1rem .25rem; /* Внутренние отступы */
+    border: 1px solid transparent; /* Граница для эффекта фокуса */
+    transition: border-color .3s;
+}
+
+.contact-content:focus-within { /* Стиль при фокусе на input/textarea внутри */
+    border-color: var(--primary-color-alt); /* Акцентная граница при фокусе */
+}
+
+.contact-label {
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+    display: block; /* Лейбл над полем */
+    margin-bottom: .25rem;
+}
+
+.contact-input { /* Общие стили для input и textarea */
+    width: 100%;
+    background-color: transparent; /* Фон поля прозрачный, т.к. цвет у .contact-content */
+    border: none;
+    outline: none;
+    padding: .25rem 0; /* Небольшие вертикальные отступы */
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+}
+
+textarea.contact-input { /* Специфично для textarea, если нужно */
+    resize: vertical; /* Разрешить изменение размера только по вертикали */
+    min-height: 120px; /* Минимальная высота */
+}
+
+/* --- Адаптивность для Contact --- */
+
+/* Планшеты */
+@media screen and (min-width: 568px) { /* Медиа-запрос из style.css */
+    .contact-container {
+        grid-template-columns: repeat(2, 1fr); /* Две колонки для контактов */
+        gap: 4rem; /* Увеличим разрыв */
+    }
+}
+
+/* Десктопы */
+@media screen and (min-width: 768px) { /* Медиа-запрос из style.css */
+  .contact-container {
+    /* grid-template-columns: 1fr 1fr; Уже установлено */
+    align-items: start; /* Выровнять начало форм и инфо */
+    /* gap: 4rem; Уже установлено */
+  }
+   .contact-information { /* Блок с инфо (слева) */
+        margin-bottom: var(--mb-3); /* Увеличим отступ снизу, если нужно */
+    }
+    .contact-inputs { /* Поля ввода в форме (справа) */
+        grid-template-columns: repeat(2, 1fr); /* Два поля в ряд внутри формы */
+    }
+}

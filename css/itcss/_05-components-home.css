@@ -1,0 +1,110 @@
+/*=============== COMPONENTS: HOME ===============*/
+
+.home-section {
+    padding-top: 4rem; /* Дополнительный отступ сверху для первой секции */
+}
+
+.home-content { /* Блок с текстом, является grid-элементом в .home-container */
+    order: 2; /* Текст вторым на мобильных */
+    /* display: grid; row-gap: 2rem; gap: 1.5rem; -- эти стили были, но .home-content сам grid-item, а не контейнер */
+}
+
+.home-visual { /* Блок с картинкой, является grid-элементом в .home-container */
+    display: flex; /* Для внутреннего выравнивания картинки */
+    align-items: center;
+    justify-content: center;
+    order: 1; /* Картинка первой на мобильных */
+}
+
+.home-title {
+    font-size: var(--h1-font-size);
+    margin-bottom: var(--mb-0-25);
+}
+
+.home-subtitle {
+    position: relative;
+    color: var(--primary-color);
+    display: inline-block;
+    padding-left: 5.4rem;
+    font-weight: var(--font-medium);
+    font-size: 1.8rem;
+    margin-bottom: var(--mb-1);
+    white-space: nowrap;
+}
+
+.home-subtitle::before {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 1px;
+    background-color: var(--primary-color);
+    left: 0;
+    top: 1rem; /* Подбирается под размер шрифта .home-subtitle */
+}
+
+.home-description {
+    margin-bottom: var(--mb-2);
+}
+
+.home-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.home-image { /* Общие стили для изображения, могут быть переопределены в медиа-запросах */
+  width: 100%;
+  max-width: 450px; /* Ограничение на мобильных */
+  height: auto;
+  display: block;
+}
+
+/* --- Адаптивность для Home --- */
+
+/* Маленькие устройства */
+@media screen and (max-width: 350px) {
+  .home-title { 
+    font-size: 2rem; 
+  }
+  .home-subtitle { 
+    padding-left: 4rem; 
+    font-size: 1.1rem;
+  }
+  .home-subtitle::before { 
+    width: 50px; 
+    top: 0.8rem; 
+  }
+}
+
+/* Планшеты и небольшие десктопы */
+@media screen and (min-width: 768px) {
+  /* Специфичный контейнер секции Home */
+  section#home .home-container.container.grid { 
+    grid-template-columns: 4fr 9fr; 
+    align-items: stretch; 
+    gap: 2rem; 
+  }
+  
+  .home-content { 
+    order: 1; /* Текст слева */
+  }
+
+  .home-visual { 
+    order: 2; /* Изображение справа */
+    align-self: stretch; 
+  }
+  
+  .home-image { 
+    width: 100%;
+    height: 100%; 
+    max-width: 100%; 
+    object-fit: contain; 
+  }
+}
+
+/* Большие десктопы */
+@media screen and (min-width: 1024px) {
+  section#home .home-container.container.grid { 
+    gap: 5rem; 
+  }
+}

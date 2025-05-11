@@ -1,0 +1,97 @@
+/*=============== COMPONENTS: PROJECTS ===============*/
+
+.projects-container {
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Адаптивная сетка по умолчанию */
+     gap: 2rem;
+}
+
+.project-item {
+    background-color: var(--container-color);
+    border-radius: .5rem;
+    overflow: hidden; /* Чтобы скруглить углы у изображения */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow .3s, transform .3s; /* Добавим transform для интерактивности */
+    display: flex; /* Для управления внутренней структурой карточки (изображение, контент) */
+    flex-direction: column; /* Располагаем элементы вертикально */
+}
+
+.project-item:hover {
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+     transform: translateY(-3px); /* Небольшой подъем при наведении */
+}
+
+.project-img-wrapper { /* Новая обертка для изображения, чтобы контент не влиял на его высоту */
+    height: 200px; /* Фиксированная высота для единообразия */
+    background-color: var(--primary-color-light); /* Фон для заглушки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Обрезать изображение, если оно больше */
+}
+
+.project-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Масштабировать изображение с сохранением пропорций */
+    transition: transform .3s ease-out; /* Эффект для изображения при наведении на карточку */
+}
+
+.project-item:hover .project-img-wrapper img {
+    transform: scale(1.05); /* Небольшое увеличение изображения */
+}
+
+.project-placeholder-img {
+    font-size: 1.5rem;
+    color: var(--primary-color-alt);
+    font-weight: var(--font-semi-bold);
+}
+
+.project-content { /* Обертка для текстового контента и кнопки */
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Позволяет этому блоку занять все доступное пространство в карточке */
+}
+
+.project-title {
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-0-5);
+    color: var(--title-color);
+}
+
+.project-description {
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-1);
+    flex-grow: 1; /* Описание будет растягиваться, отодвигая кнопку вниз */
+    line-height: 1.6;
+}
+
+.project-item .button { /* Стили для кнопки внутри карточки проекта */
+    margin-top: auto; /* Прижимает кнопку к низу .project-content, если есть flex-grow у .project-description */
+    align-self: flex-start; /* Выравниваем кнопку по левому краю */
+}
+
+
+/* --- Адаптивность для Projects --- */
+
+/* Планшеты */
+@media screen and (min-width: 568px) { /* Медиа-запрос из style.css, убедимся, что min-width корректный */
+     .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* Две колонки проектов */
+    }
+}
+
+/* Десктопы */
+@media screen and (min-width: 768px) { /* Медиа-запрос из style.css */
+  .projects-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Сделать адаптивнее */
+    /* gap остается 2rem или можно скорректировать */
+  }
+}
+
+/* Большие десктопы (если нужно, например, 3 в ряд) */
+/* @media screen and (min-width: 992px) {
+    .projects-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+} */

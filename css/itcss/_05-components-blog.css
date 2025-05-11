@@ -1,0 +1,90 @@
+/*=============== COMPONENTS: BLOG ===============*/
+
+.blog-section {
+    padding: 4rem 0 2rem; /* Общий отступ для секции блога */
+}
+
+.blog-container { /* Контейнер для списка постов блога */
+    max-width: 800px; /* Ширина контейнера блога по умолчанию */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem; /* Боковые отступы для мобильных */
+    /* Для грид-раскладки, если посты будут в несколько колонок */
+    /* display: grid; */
+    /* gap: 2rem; */
+    /* grid-template-columns: 1fr; По умолчанию одна колонка */
+}
+
+.blog-post { /* Стили для отдельного поста в блоге */
+    background-color: var(--container-color);
+    padding: 2rem;
+    border-radius: .75rem;
+    margin-bottom: 3rem; /* Отступ между постами */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow .3s, transform .3s; /* Плавные переходы для интерактивности */
+}
+
+.blog-post:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+/* Стили для элементов внутри поста, если они специфичны для блога */
+/* Если используются стандартные h2, p и т.д., можно их не дублировать, 
+   но если есть нюансы только для блога - то здесь */
+
+.blog-post h2 { /* Заголовок поста */
+    font-size: var(--h2-font-size); /* Размер из переменных */
+    color: var(--title-color);
+    margin-bottom: var(--mb-1);
+    line-height: 1.3; /* Для лучшей читаемости заголовков */
+}
+
+.blog-post p { /* Текст поста (абзацы) */
+    font-size: var(--normal-font-size); /* Или var(--small-font-size) для краткого описания */
+    color: var(--text-color);
+    margin-bottom: var(--mb-1-5);
+    line-height: 1.7; /* Улучшенная читаемость для длинных текстов */
+}
+
+/* Мета-информация (автор, дата), если нужна */
+/* .blog-post-meta {
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+    margin-bottom: var(--mb-1);
+} */
+
+/* Кнопка "Читать далее", если есть */
+/* .blog-post .button {
+    margin-top: var(--mb-1);
+} */
+
+
+/* --- Адаптивность для Блога --- */
+
+/* Большие устройства (Ноутбуки/Десктопы) */
+@media screen and (min-width: 768px) {
+  .blog-container {
+    max-width: 900px; /* Увеличиваем ширину контейнера на больших экранах */
+    padding: 0; /* Убираем боковые отступы, если контейнер центрирован */
+    /* Если хотим несколько колонок: */
+    display: grid; /* Включаем грид */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивные колонки */
+    /* или grid-template-columns: repeat(2, 1fr); для двух колонок */
+    /* или grid-template-columns: repeat(3, 1fr); для трех колонок, как было указано */
+    gap: 2.5rem; /* Отступ между постами в гриде */
+  }
+
+  .blog-post {
+    margin-bottom: 0; /* Убираем нижний отступ, т.к. теперь есть gap в гриде */
+    /* Можно добавить стили, если основной контент карточки становится слишком длинным */
+  }
+}
+
+/* Очень большие десктопы, если нужно 3 колонки */
+/* @media screen and (min-width: 992px) { 
+    .blog-container {
+        
+        
+    }
+} */

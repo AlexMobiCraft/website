@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+/*=============== 04. OBJECTS ===============*/
+/* Классы для структурных паттернов, не зависящих от оформления (layout). */
+
+/* --- Контейнер --- */
+.container {
+  max-width: 968px; /* Максимальная ширина контента */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem; /* Боковые отступы */
+  padding-right: 1.5rem;
+}
+
+/* --- Сетка --- */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* ----- Медиа-запросы для Объектов ----- */
+
+/* Для больших экранов (планшеты и десктопы) */
+@media screen and (min-width: 768px) {
+  /* .container уже имеет margin: auto и padding глобально, 
+     поэтому специфичных правил для этого разрешения здесь нет. 
+     Если бы были, они бы остались. */
+}
+
+/* Для очень больших устройств (например, большие десктопы) */
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1140px; /* Можно увеличить максимальную ширину для очень больших экранов */
+    padding-left: 2rem;  /* И боковые отступы */
+    padding-right: 2rem;
+  }
+}
+
+/* Если есть стили для .section, .section-title, .section-subtitle, они будут здесь */
+.section {
+  padding: 4.5rem 0 2.5rem; /* Общие отступы для секций */
+}
+
+.section-title,
+.section-subtitle {
+  text-align: center;
+}
+
+.section-title {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+  margin-bottom: var(--mb-2);
+}
+
+.section-subtitle {
+  display: block;
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
+  margin-bottom: var(--mb-3);
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    padding: 6rem 0 4rem;
+  }
+  .section-title {
+    margin-bottom: var(--mb-3);
+  }
+  .section-subtitle {
+    margin-bottom: var(--mb-4);
+  }
+}

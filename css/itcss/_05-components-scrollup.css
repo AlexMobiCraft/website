@@ -1,0 +1,54 @@
+/*=============== COMPONENTS: SCROLL UP ===============*/
+.scrollup {
+    position: fixed;
+    right: 1rem;
+    bottom: -30%; /* Скрываем изначально, немного увеличим значение для надежности */
+    background-color: var(--primary-color);
+    opacity: .8;
+    padding: .3rem .5rem; /* Используем rem для паддингов */
+    border-radius: .4rem;
+    z-index: var(--z-tooltip); /* Убедимся, что z-tooltip определен в _00-settings.css или _02-tools.css */
+    transition: .4s ease-in-out; /* Добавим ease для плавности */
+    visibility: hidden; /* Используем visibility для лучшей производительности скрытия/показа */
+}
+
+.scrollup:hover {
+    background-color: var(--primary-color-alt);
+    opacity: 1; /* Полная непрозрачность при наведении */
+}
+
+.scrollup-icon {
+    font-size: 1.5rem;
+    color: var(--container-color); /* Используем цвет контейнера для иконки (обычно белый) */
+}
+
+/* Show scroll */
+.show-scroll {
+    bottom: 5rem; /* Положение, когда кнопка видна */
+    visibility: visible; /* Делаем видимым */
+    opacity: .8; /* Возвращаем opacity, если нужно */
+}
+
+/* --- Адаптивность для Scroll Up --- */
+
+/* Ноутбуки/Десктопы */
+@media screen and (min-width: 768px) {
+  .scrollup {
+    right: 2rem;
+    padding: .4rem .6rem; /* Немного увеличим */
+  }
+  .scrollup-icon {
+    font-size: 1.6rem; /* Немного увеличим иконку */
+  }
+  .show-scroll {
+    bottom: 5rem; /* Может оставаться тем же или немного измениться */
+  }
+}
+
+/* Очень большие десктопы */
+@media screen and (min-width: 1024px) {
+  .scrollup {
+    right: 3rem;
+  }
+  /* .show-scroll { bottom: 5rem; } - если не меняется, можно не дублировать */
+}

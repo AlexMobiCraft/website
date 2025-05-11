@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+/*=============== 05. COMPONENTS: BUTTONS ===============*/
+
+.button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #FFF; /* Белый текст на основной кнопке */
+  padding: 1rem 1.75rem; /* Немного увеличим паддинги */
+  border-radius: .5rem;
+  font-weight: var(--font-medium);
+  transition: .3s ease-in-out; /* Плавнее переход */
+  border: 2px solid transparent; /* Для консистентности с ghost */
+  cursor: pointer;
+  text-transform: uppercase; /* Для акцента */
+  letter-spacing: 0.5px;
+}
+
+.button:hover {
+  background-color: var(--primary-color-alt);
+  transform: translateY(-2px); /* Легкий эффект приподнятия */
+  box-shadow: 0 4px 10px hsla(var(--hue-primary), 60%, 45%, 0.3);
+}
+
+.button-icon {
+  font-size: 1.25rem;
+  margin-left: var(--mb-0-5);
+  transition: .3s;
+}
+
+.button--flex {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mb-0-5); /* Отступ между текстом и иконкой */
+}
+
+.button--ghost {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+.button--ghost:hover {
+    background-color: var(--primary-color-light); /* Легкий фон при наведении */
+    color: var(--primary-color-alt);
+    /* box-shadow: 0 2px 8px hsla(var(--hue-primary), 60%, 45%, 0.2); */
+}
+
+/* Кнопка с акцентным цветом */
+.button--accent {
+    background-color: var(--accent-color);
+    color: hsl(var(--hue-accent), 80%, 15%); /* Темный текст на ярком акценте */
+    border-color: var(--accent-color);
+}
+
+.button--accent:hover {
+    background-color: hsl(var(--hue-accent), 90%, 50%);
+    color: hsl(var(--hue-accent), 80%, 10%);
+    box-shadow: 0 4px 10px hsla(var(--hue-accent), 90%, 55%, 0.3);
+}
+
+.button--link{
+    padding: 0;
+    background-color: transparent;
+    color: var(--primary-color);
+    font-weight: var(--font-medium);
+    border: none;
+    text-transform: none; /* Убираем uppercase для ссылок-кнопок */
+    letter-spacing: normal;
+}
+
+/* --- Адаптивность для кнопок --- */
+/* Маленькие устройства */
+@media screen and (max-width: 350px) {
+  /* Уменьшить шрифты или отступы при необходимости */
+  .button--flex.button--small { /* Предполагаем, что .button--small также должен присутствовать */
+    flex-direction: column;
+    align-items: center;
+  }
+}

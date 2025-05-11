@@ -1,0 +1,229 @@
+@charset "UTF-8";
+
+/*=============== 05. COMPONENTS: HEADER & NAV ===============*/
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0; /* По умолчанию хедер всегда сверху */
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color); /* Фон наследуется от body, но может быть переопределен при скролле */
+  box-shadow: 0 1px 4px hsla(var(--hue-primary), 30%, 8%, .1); /* Тень для верхнего меню */
+  transition: background-color .3s, box-shadow .3s; /* Плавность для scroll-header */
+}
+
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo,
+.nav-toggle {
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: .25rem; /* Если есть иконка рядом с лого */
+}
+
+.nav-logo-icon { /* Если есть иконка для лого */
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+
+.nav-toggle {
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  color: var(--primary-color);
+}
+
+/* --- Стили для мобильного меню (по умолчанию скрыто и появляется снизу) --- */
+.nav-menu {
+  position: fixed;
+  bottom: -100%; /* Изначально скрыто далеко внизу */
+  left: 0;
+  width: 100%;
+  background-color: var(--body-color);
+  padding: 2rem 1.5rem 4rem; /* Внутренние отступы */
+  box-shadow: 0 -1px 4px hsla(var(--hue-primary), 30%, 8%, .15);
+  border-radius: 1.5rem 1.5rem 0 0;
+  transition: bottom .3s, visibility .3s, opacity .3s;
+  z-index: var(--z-fixed);
+  max-height: 75vh; 
+  overflow-y: auto; 
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Показать меню (мобильное) */
+.show-menu {
+  bottom: 0;
+  visibility: visible;
+  opacity: 1;
+}
+
+.nav-list {
+  display: grid; /* Используем grid для мобильного меню */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; 
+  padding: 0; /* Убедимся, что нет лишних отступов у ul */
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--small-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  transition: color .3s;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  /* color: var(--title-color); /* Иконки наследуют цвет ссылки или задаем отдельно */
+  margin-bottom: var(--mb-0-25);
+}
+
+/* Активная ссылка */
+.active-link {
+  color: var(--primary-color);
+}
+
+/* Кнопка закрытия мобильного меню (если используется) */
+.nav-close {
+  position: absolute;
+  right: 1.3rem;
+  bottom: .5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.nav-close:hover {
+  color: var(--primary-color-alt);
+}
+
+/* --- Кнопка переключения темы --- */
+.theme-switch {
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex; /* Для лучшего выравнивания иконки */
+  align-items: center;
+  transition: color .3s;
+}
+
+.theme-switch:hover {
+  color: var(--primary-color);
+}
+
+
+/* ----- Медиа-запросы для Header & Nav ----- */
+
+/* Для маленьких устройств (подстройка мобильного меню) */
+@media screen and (max-width: 350px) {
+  .nav-menu {
+    padding: 2rem .5rem 4rem; /* Уменьшаем боковые отступы */
+  }
+  .nav-list {
+    column-gap: 0; /* Убираем или уменьшаем gap, если не помещается */
+  }
+}
+
+
+/* Для средних устройств (планшеты) и выше - переход к верхнему меню */
+@media screen and (min-width: 768px) {
+  .header {
+    top: 0;
+    bottom: auto; /* Убираем привязку к низу, если была */
+    /* box-shadow: 0 1px 4px hsla(var(--hue-primary), 30%, 8%, .1); /* Тень для верхнего меню */
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 1.5rem); /* Увеличиваем высоту хедера */
+    column-gap: 1rem; /* Отступ между лого, меню и переключателем темы */
+  }
+
+  .nav-logo-icon,
+  .nav-toggle,
+  .nav-close {
+    display: none; /* Скрываем иконку лого (если была только для мобильных), бургер и крестик */
+  }
+
+  /* Восстанавливаем отображение nav-menu и меняем его стили для десктопа */
+  .nav-menu {
+    position: static;   
+    width: auto;        
+    background: none;   
+    padding: 0;         
+    display: flex;      
+    flex-direction: row;
+    align-items: center;
+    column-gap: 2.5rem; 
+    list-style: none;  
+    visibility: visible; 
+    opacity: 1;        
+    bottom: auto;      
+    left: auto;        
+    box-shadow: none;  
+    border-radius: 0;  
+    max-height: none;  
+    overflow-y: visible; 
+  }
+
+  .nav-item { 
+    margin-bottom: 0; /* Сбрасываем отступ снизу для пунктов меню */
+  }
+
+  .nav-link {
+    flex-direction: row; /* Возвращаем горизонтальное расположение для ссылок (если были иконки) */
+    font-size: var(--normal-font-size);
+    color: var(--text-color-light); /* Немного приглушенный цвет для неактивных ссылок */
+  }
+  .nav-link:hover,
+  .nav-link.active-link {
+    color: var(--primary-color);
+  }
+
+  .nav-icon {
+    display: none; /* Скрываем иконки в пунктах меню на десктопе (если они были только для мобильных) */
+  }
+  
+  /* Группа для меню и переключателя темы */
+  .nav-right-group { 
+    display: flex;
+    align-items: center; 
+    gap: 1.5rem; 
+  }
+
+  .theme-switch { /* Позиционирование переключателя темы на десктопе */
+    order: 1; /* Если нужно изменить порядок внутри nav-right-group */
+  }
+
+  .scroll-header {
+    box-shadow: 0 1px 4px hsla(var(--hue-primary), 30%, 8%, .1); /* Тень для верхнего меню */
+  }
+}
+
+/* Изменение фона хедера при скролле */
+.scroll-header {
+  box-shadow: 0 -1px 4px hsla(var(--hue-primary), 30%, 8%, .15); /* Тень для мобильного нижнего меню */
+  background-color: var(--body-color); /* Явный фон при скролле */
+}
