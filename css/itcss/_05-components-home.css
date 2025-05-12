@@ -1,12 +1,7 @@
 /*=============== COMPONENTS: HOME ===============*/
 
 .home-section {
-    padding-top: 4rem; /* Дополнительный отступ сверху для первой секции */
-}
-
-.home-content { /* Блок с текстом, является grid-элементом в .home-container */
-    order: 2; /* Текст вторым на мобильных */
-    /* display: grid; row-gap: 2rem; gap: 1.5rem; -- эти стили были, но .home-content сам grid-item, а не контейнер */
+    padding-top: 2rem; /* Дополнительный отступ сверху для первой секции */
 }
 
 .home-visual { /* Блок с картинкой, является grid-элементом в .home-container */
@@ -16,9 +11,16 @@
     order: 1; /* Картинка первой на мобильных */
 }
 
+.home-intro-line {
+    display: flex;
+    align-items: baseline; /* Выравнивание по базовой линии текста */
+    gap: 0.5rem; /* Небольшой отступ между "Привет, я" и "Алекс" */
+    order: 3; /* Порядок на мобильных, после subtitle */
+    margin-bottom: 0; /* Уменьшен отступ снизу */
+}
+
 .home-title {
     font-size: var(--h1-font-size);
-    margin-bottom: var(--mb-0-25);
 }
 
 .home-subtitle {
@@ -26,13 +28,14 @@
     color: var(--primary-color);
     display: inline-block;
     padding-left: 5.4rem;
-    font-weight: var(--font-medium);
-    font-size: 1.8rem;
+    font-weight: var(--font-medium); /* Возвращено */
+    font-size: 2.0rem; /* Увеличен размер шрифта */
     margin-bottom: var(--mb-1);
     white-space: nowrap;
+    order: 2; /* Порядок на мобильных, после visual */
 }
 
-.home-subtitle::before {
+.home-subtitle::before { /* Восстановлено */
     content: '';
     position: absolute;
     width: 70px;
@@ -40,6 +43,14 @@
     background-color: var(--primary-color);
     left: 0;
     top: 1rem; /* Подбирается под размер шрифта .home-subtitle */
+}
+
+.home-greeting {
+    font-size: var(--h3-font-size); /* Можно настроить размер, если нужно */
+}
+
+.home-text-column { /* Новый класс для текстового содержимого */
+    order: 4; /* Текстовый блок после .home-intro-line на мобильных */
 }
 
 .home-description {
@@ -80,20 +91,31 @@
 @media screen and (min-width: 768px) {
   /* Специфичный контейнер секции Home */
   section#home .home-container.container.grid { 
-    grid-template-columns: 4fr 9fr; 
-    align-items: stretch; 
+    display: grid; /* Убедимся, что это grid контейнер */
+    grid-template-columns: 6fr 4fr; /* Текст (левая колонка) 60%, изображение (правая) 40% */
+    align-items: center; /* Изменено для вертикального выравнивания по центру */
     gap: 2rem; 
   }
   
-  .home-content { 
-    order: 1; /* Текст слева */
+  .home-subtitle,
+  .home-greeting,
+  .home-title,
+  .home-intro-line /* Этот элемент теперь занимает всю ширину */
+   {
+    grid-column: 1 / -1; /* Заголовки и строка приветствия занимают всю ширину */
   }
 
+  /* Порядок элементов на десктопе */
+  .home-subtitle { order: 1; }
+  .home-intro-line { order: 2; }
+  .home-text-column { 
+    order: 3; 
+  }
   .home-visual { 
-    order: 2; /* Изображение справа */
+    order: 4; 
     align-self: stretch; 
   }
-  
+
   .home-image { 
     width: 100%;
     height: 100%; 
