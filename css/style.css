@@ -1,18 +1,18 @@
 /*=============== ITCSS LAYERS ===============*/
-@import url('itcss/_00-settings.css');
-@import url('itcss/_01-tools.css');
-@import url('itcss/_02-generic.css');
-@import url('itcss/_03-elements.css');
-@import url('itcss/_04-objects.css');
-@import url('itcss/_05-components-buttons.css');
-@import url('itcss/_05-components-header.css');
-@import url('itcss/_05-components-home.css');
-@import url('itcss/_05-components-services.css');
-@import url('itcss/_05-components-projects.css');
-@import url('itcss/_05-components-contact.css');
-@import url('itcss/_05-components-footer.css');
-@import url('itcss/_05-components-scrollup.css');
-@import url('itcss/_05-components-blog.css');
+@import url('itcss/00-settings.css');
+@import url('itcss/01-tools.css');
+@import url('itcss/02-generic.css');
+@import url('itcss/03-elements.css');
+@import url('itcss/04-objects.css');
+@import url('itcss/05-components-buttons.css');
+@import url('itcss/05-components-header.css');
+@import url('itcss/05-components-home.css');
+@import url('itcss/05-components-services.css');
+@import url('itcss/05-components-projects.css');
+@import url('itcss/05-components-contact.css');
+@import url('itcss/05-components-footer.css');
+@import url('itcss/05-components-scrollup.css');
+@import url('itcss/05-components-blog.css');
 
 /*=============== АДАПТИВНОСТЬ (Медиа-запросы) ===============*/
 
