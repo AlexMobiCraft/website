@@ -20,7 +20,7 @@
 }
 
 .home-title {
-    font-size: var(--h1-font-size);
+    font-size: var(--h2-font-size);
 }
 
 .home-subtitle {
@@ -29,7 +29,7 @@
     display: inline-block;
     padding-left: 5.4rem;
     font-weight: var(--font-medium); /* Возвращено */
-    font-size: 2.0rem; /* Увеличен размер шрифта */
+    font-size: 2.5rem; /* Увеличен размер шрифта */
     margin-bottom: var(--mb-1);
     white-space: nowrap;
     order: 2; /* Порядок на мобильных, после visual */
@@ -75,11 +75,11 @@
 /* Маленькие устройства */
 @media screen and (max-width: 350px) {
   .home-title { 
-    font-size: 2rem; 
+    font-size: var(--h2-font-size); /* Уменьшен для соответствия --h2-font-size */
   }
   .home-subtitle { 
     padding-left: 4rem; 
-    font-size: 1.1rem;
+    font-size: 1.3rem; /* Увеличен, но меньше базового */
   }
   .home-subtitle::before { 
     width: 50px; 
