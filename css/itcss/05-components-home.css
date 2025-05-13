@@ -4,6 +4,13 @@
     padding-top: 2rem; /* Дополнительный отступ сверху для первой секции */
 }
 
+/* Явно задаем одноколоночную сетку для мобильных по умолчанию */
+/* Это относится к контейнеру внутри секции Home, который имеет классы .container и .grid */
+section#home .home-container.container.grid {
+    grid-template-columns: 1fr; /* Одна колонка по умолчанию */
+    /* gap: 1.5rem; уже может наследоваться от .grid, но можно оставить или убрать если дублируется */
+}
+
 .home-visual { /* Блок с картинкой, является grid-элементом в .home-container */
     display: flex; /* Для внутреннего выравнивания картинки */
     align-items: center;
@@ -31,7 +38,7 @@
     font-weight: var(--font-medium); /* Возвращено */
     font-size: 2.5rem; /* Увеличен размер шрифта */
     margin-bottom: var(--mb-1);
-    white-space: nowrap;
+    white-space: normal; /* Разрешить перенос текста */
     order: 2; /* Порядок на мобильных, после visual */
 }
 
