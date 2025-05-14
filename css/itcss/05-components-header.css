@@ -37,6 +37,11 @@
 .nav-logo-icon { /* Если есть иконка для лого */
   font-size: 1.25rem;
   color: var(--primary-color);
+  display: inline-flex; /* Показываем иконку по умолчанию (мобильные) */
+}
+
+.nav-logo-text {
+  display: none; /* Скрываем текст логотипа по умолчанию (мобильные) */
 }
 
 .nav-toggle {
@@ -74,9 +79,10 @@
 }
 
 .nav-list-items {
-  display: grid; /* Используем grid для мобильного меню */
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem; 
+  display: flex; /* Изменено на flex */
+  flex-direction: column; /* Для вертикального расположения */
+  align-items: center; /* Центрируем элементы списка, если они не на всю ширину */
+  gap: 1.5rem; /* Уменьшим немного вертикальный отступ */ 
   padding: 0; /* Убедимся, что нет лишних отступов у ul */
 }
 
@@ -168,10 +174,13 @@
     display: none;
   }
 
-  .nav-logo-icon,
+  .nav-logo-icon {
+    display: none; /* Скрываем иконку лого на десктопе */
+  }
+
   .nav-toggle,
   .nav-close {
-    display: none; /* Скрываем иконку лого (если была только для мобильных), бургер и крестик */
+    display: none; /* Скрываем бургер и крестик */
   }
 
   /* Восстанавливаем отображение nav-menu и меняем его стили для десктопа */
