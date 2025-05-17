@@ -1,5 +1,10 @@
 /*=============== COMPONENTS: HOME ===============*/
 
+/* Стили для уменьшения отступа между заголовком и описанием */
+#home .home-container > .home-intro-line + .home-text-column {
+    margin-top: -1.5rem !important;
+}
+
 .home-section {
     padding-top: 2rem; /* Дополнительный отступ сверху для первой секции */
 }
@@ -24,7 +29,7 @@ section#home .home-container.container.grid {
     align-items: baseline; /* Выравнивание по базовой линии текста */
     gap: 0.5rem; /* Небольшой отступ между "Привет, я" и "Алекс" */
     order: 3; /* Порядок на мобильных, после subtitle */
-    margin-bottom: 0; /* Уменьшен отступ снизу */
+    margin: 6rem 0 0 0; /* Отступ сверху 1.5rem, остальные отступы сброшены */
 }
 
 .home-title {
@@ -36,11 +41,13 @@ section#home .home-container.container.grid {
     color: var(--primary-color);
     display: inline-block;
     padding-left: 5.4rem;
-    font-weight: var(--font-medium); /* Возвращено */
-    font-size: 2.5rem; /* Увеличен размер шрифта */
-    margin-bottom: var(--mb-1);
-    white-space: normal; /* Разрешить перенос текста */
-    order: 2; /* Порядок на мобильных, после visual */
+    font-weight: var(--font-medium);
+    font-size: 2.5rem;
+    margin: 0 0 -1rem 0 !important; /* Отрицательный отступ снизу и обнуление остальных */
+    white-space: normal;
+    line-height: 1.1;
+    order: 2;
+    padding-bottom: 0 !important;
 }
 
 .home-subtitle::before { /* Восстановлено */
@@ -59,10 +66,13 @@ section#home .home-container.container.grid {
 
 .home-text-column { /* Новый класс для текстового содержимого */
     order: 4; /* Текстовый блок после .home-intro-line на мобильных */
+    margin-top: 0; /* Убираем отступ сверху */
+    padding-top: 0; /* На всякий случай убираем внутренний отступ */
 }
 
 .home-description {
-    margin-bottom: var(--mb-2);
+    margin: -0.5rem 0 var(--mb-2) 0 !important; /* Отрицательный отступ сверху */
+    padding: 0 !important;
 }
 
 .home-buttons {
@@ -135,6 +145,12 @@ section#home .home-container.container.grid {
 /* Большие десктопы */
 @media screen and (min-width: 1024px) {
   section#home .home-container.container.grid { 
-    gap: 5rem; 
+    gap: 1.5rem; /* Уменьшаем отступ между колонками */
+    row-gap: 0.5rem; /* Уменьшаем отступ между строками */
+  }
+  
+  /* Уменьшаем отступ между заголовком и описанием на больших экранах */
+  #home .home-container > .home-intro-line + .home-text-column {
+    margin-top: -0.5rem !important;
   }
 }
