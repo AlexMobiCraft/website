@@ -90,18 +90,23 @@ section#home .home-container.container.grid {
 
 /* --- Адаптивность для Home --- */
 
-/* Маленькие устройства */
-@media screen and (max-width: 350px) {
+/* Мобильные устройства (до 768px) */
+@media screen and (max-width: 767px) {
   .home-title { 
-    font-size: var(--h2-font-size); /* Уменьшен для соответствия --h2-font-size */
+    font-size: var(--h2-font-size);
   }
   .home-subtitle { 
     padding-left: 4rem; 
-    font-size: 1.3rem; /* Увеличен, но меньше базового */
+    font-size: 1.3rem;
   }
   .home-subtitle::before { 
     width: 50px; 
     top: 0.8rem; 
+  }
+  
+  /* Увеличиваем отступ после блока с приветствием */
+  .home-intro-line {
+    margin-bottom: 2rem !important; /* Увеличили отступ до 2rem */
   }
 }
 
